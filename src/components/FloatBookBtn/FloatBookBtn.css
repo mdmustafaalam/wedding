@@ -1,0 +1,30 @@
+.float-book-btn {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  z-index: 900;
+  background: var(--gold);
+  color: #ffffff;
+  border: none;
+  padding: 14px 22px;
+  border-radius: var(--radius-pill);
+  font-weight: 600;
+  font-size: 14px;
+  font-family: var(--font-body);
+  cursor: pointer;
+  box-shadow: 0 4px 24px rgba(212, 175, 55, 0.5);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.25s ease;
+}
+.float-book-btn:hover {
+  background: var(--gold-light);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 32px rgba(212, 175, 55, 0.65);
+}
+.float-book-btn i { font-size: 15px; }
+
+@media (max-width: 640px) {
+  .float-book-btn { right: 20px; bottom: 20px; padding: 12px 18px; font-size: 13px; }
+}

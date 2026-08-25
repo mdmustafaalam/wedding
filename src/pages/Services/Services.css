@@ -1,0 +1,100 @@
+.services-process { background: var(--bg-alt); }
+
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  margin-top: 56px;
+  position: relative;
+}
+.process-grid::before {
+  content: '';
+  position: absolute;
+  top: 36px;
+  left: calc(12.5% + 24px);
+  right: calc(12.5% + 24px);
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border-strong), transparent);
+  z-index: 0;
+}
+
+.process-step {
+  text-align: center;
+  padding: 0 20px;
+  position: relative;
+  z-index: 1;
+}
+.process-step-num {
+  font-family: var(--font-heading);
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: var(--gold);
+  margin-bottom: 16px;
+  font-weight: 600;
+}
+.process-step-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  border: 1px solid var(--border-strong);
+  background: var(--card-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  color: var(--gold);
+  margin: 0 auto 20px;
+  transition: all 0.3s;
+}
+.process-step:hover .process-step-icon {
+  background: var(--gold);
+  color: #111;
+  border-color: var(--gold);
+  transform: scale(1.08);
+}
+.process-step-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 10px;
+}
+.process-step-desc {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.75;
+}
+
+@media (max-width: 900px) {
+  .process-grid { grid-template-columns: repeat(2, 1fr); gap: 40px; }
+  .process-grid::before { display: none; }
+}
+@media (max-width: 480px) {
+  .process-grid { grid-template-columns: 1fr; gap: 32px; }
+}
+
+/* ── Large screen services ── */
+@media (min-width: 1400px) {
+  .process-step { padding: 0 32px; }
+}
+
+/* Equal height service cards */
+.services-equal-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--grid-gap);
+  align-items: stretch;
+}
+.services-equal-grid > * {
+  display: flex;
+  flex-direction: column;
+}
+.services-equal-grid .service-card {
+  flex: 1;
+  height: 100%;
+}
+@media (max-width: 900px) {
+  .services-equal-grid { grid-template-columns: repeat(2,1fr); }
+}
+@media (max-width: 640px) {
+  .services-equal-grid { grid-template-columns: 1fr; }
+}

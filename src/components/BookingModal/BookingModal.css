@@ -1,0 +1,173 @@
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  animation: fadeIn 0.25s ease;
+}
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* Modal box — fixed height with internal scroll */
+.modal-box {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  max-width: 580px;
+  width: 100%;
+  max-height: 88vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  animation: slideUp 0.3s ease;
+  overflow: hidden;           /* clip to border-radius */
+}
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Sticky header — always visible even when scrolling ── */
+.modal-sticky-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 24px 28px 20px;
+  border-bottom: 1px solid var(--border);
+  background: var(--card-bg);
+  flex-shrink: 0;             /* never shrinks — stays visible */
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.modal-header-left {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  flex: 1;
+  min-width: 0;
+}
+
+.modal-icon-sm {
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  border-radius: 12px;
+  background: var(--gold-alpha);
+  border: 1px solid var(--border-strong);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: var(--gold);
+  margin-top: 2px;
+}
+
+.modal-title {
+  font-size: 22px;
+  margin-bottom: 4px;
+  color: var(--text);
+  line-height: 1.2;
+}
+.modal-title em { font-style: italic; color: var(--gold); }
+.modal-sub { color: var(--text-muted); font-size: 13px; }
+
+/* ── Close button — part of sticky header ── */
+.modal-close {
+  width: 36px;
+  height: 36px;
+  min-width: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--card-bg);
+  color: var(--text-muted);
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.modal-close:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+  background: var(--gold-alpha);
+}
+
+/* ── Scrollable body ── */
+.modal-body {
+  overflow-y: auto;
+  flex: 1;
+  padding: 24px 28px 28px;
+  /* Custom scrollbar */
+  scrollbar-width: thin;
+  scrollbar-color: var(--gold-dark) transparent;
+}
+.modal-body::-webkit-scrollbar { width: 4px; }
+.modal-body::-webkit-scrollbar-track { background: transparent; }
+.modal-body::-webkit-scrollbar-thumb { background: var(--gold-dark); border-radius: 2px; }
+
+/* ── Form ── */
+.booking-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.booking-form label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.booking-form label i { color: var(--gold); font-size: 12px; }
+
+.booking-submit {
+  width: 100%;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  margin-top: 4px;
+}
+
+/* ── Success ── */
+.booking-success {
+  text-align: center;
+  padding: 32px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+.success-icon {
+  font-size: 56px;
+  color: var(--gold);
+  animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+@keyframes popIn {
+  from { transform: scale(0.4); opacity: 0; }
+  to   { transform: scale(1);   opacity: 1; }
+}
+.success-title { font-size: 22px; color: var(--text); }
+.success-text {
+  color: var(--text-muted);
+  font-size: 14px;
+  line-height: 1.75;
+  max-width: 340px;
+}
+
+@media (max-width: 560px) {
+  .modal-backdrop { padding: 0; align-items: flex-end; }
+  .modal-box {
+    border-radius: 20px 20px 0 0;
+    max-height: 92vh;
+  }
+  .modal-sticky-header { padding: 20px 20px 16px; }
+  .modal-body { padding: 20px 20px 24px; }
+}
