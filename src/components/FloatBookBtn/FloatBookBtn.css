@@ -28,3 +28,10 @@
 @media (max-width: 640px) {
   .float-book-btn { right: 20px; bottom: 20px; padding: 12px 18px; font-size: 13px; }
 }
+@media (max-width: 380px) {
+  .float-book-btn { right: 16px; bottom: 16px; padding: 11px 15px; }
+  .float-book-btn i { font-size: 13px; }
+}
+@media (min-width: 1800px) {
+  .float-book-btn { padding: 16px 28px; font-size: 15px; }
+}

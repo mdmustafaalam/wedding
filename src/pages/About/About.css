@@ -240,7 +240,24 @@
   .about-mv-card { padding: 48px 44px; }
   .about-why-card { padding: 36px 32px; }
 }
+@media (max-width: 1100px) {
+  .about-story-grid { gap: 56px; }
+}
 @media (max-width: 900px) {
   .about-story-grid { grid-template-columns: 1fr; gap: 40px; }
   .about-img-wrap { max-width: 100%; }
+}
+@media (max-width: 640px) {
+  .about-mv-card { padding: 30px 22px; }
+  .about-why-card { padding: 28px 20px; }
+  .about-img-stat-card { padding: 14px 16px; }
+  .about-stat-n { font-size: 26px; }
+  .about-img-award { top: 12px; right: 12px; padding: 8px 12px; font-size: 11px; }
+  .team-info { padding: 18px 16px 20px; }
+}
+@media (min-width: 1800px) {
+  .about-story-grid { gap: 120px; }
+  .about-img-wrap { max-width: 560px; }
+  .about-mv-card { padding: 56px 52px; }
+  .about-body-text { font-size: 16px; }
 }

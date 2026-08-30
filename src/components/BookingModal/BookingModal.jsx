@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { getLenis } from '../../utils/lenis'
 import './BookingModal.css'
 
 const initialForm = {
@@ -13,15 +14,17 @@ export default function BookingModal({ isOpen, onClose }) {
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden'
+      getLenis()?.stop()
     } else {
       document.body.style.overflow = ''
+      getLenis()?.start()
       // Reset after close animation
       setTimeout(() => {
         setSubmitted(false)
         setForm(initialForm)
       }, 300)
     }
-    return () => { document.body.style.overflow = '' }
+    return () => { document.body.style.overflow = ''; getLenis()?.start() }
   }, [isOpen])
 
   // Close on Escape

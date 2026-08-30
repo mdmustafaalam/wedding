@@ -100,7 +100,7 @@ export const testimonials = [
     name: 'Priya & Rohan Mehta',
     date: 'March 2024',
     rating: 5,
-    text: 'Lumière turned our dream into reality. Every flower, every light, every moment was absolutely perfect. Our guests are still talking about it six months later.',
+    text: 'JMS turned our dream into reality. Every flower, every light, every moment was absolutely perfect. Our guests are still talking about it six months later.',
     initials: 'PR',
   },
   {
@@ -116,7 +116,7 @@ export const testimonials = [
     name: 'Sneha & Vikram Nair',
     date: 'November 2023',
     rating: 5,
-    text: 'We had a budget, and Lumière worked pure magic within it. The decoration alone looked like it cost triple what we paid. Truly five-star service.',
+    text: 'We had a budget, and JMS worked pure magic within it. The decoration alone looked like it cost triple what we paid. Truly five-star service.',
     initials: 'SV',
   },
   {
@@ -132,7 +132,7 @@ export const testimonials = [
     name: 'Meera & Rahul Joshi',
     date: 'August 2023',
     rating: 5,
-    text: 'International guests flew in just for our wedding and were blown away. Lumière made our three-day celebration seamless, joyful, and absolutely magical.',
+    text: 'International guests flew in just for our wedding and were blown away. JMS made our three-day celebration seamless, joyful, and absolutely magical.',
     initials: 'MR',
   },
   {
@@ -140,7 +140,7 @@ export const testimonials = [
     name: 'Divya & Saurabh Gupta',
     date: 'June 2023',
     rating: 5,
-    text: 'I am a wedding photographer myself, so my standards were impossibly high. Lumière exceeded every single one of them. The florist was a genuine genius.',
+    text: 'I am a wedding photographer myself, so my standards were impossibly high. JMS exceeded every single one of them. The florist was a genuine genius.',
     initials: 'DG',
   },
 ]

@@ -30,7 +30,7 @@ export default function Footer() {
         <div className="footer-brand-col">
           <div className="footer-logo">
             <i className="fa-solid fa-ring" aria-hidden="true" />
-            Lumière <em>Weddings</em>
+            JMS <em>Wedding Planner</em>
           </div>
           <p className="footer-desc">
             Crafting extraordinary love stories since 2014. Your dream wedding is our greatest creation — elegant, personal, and unforgettable.
@@ -81,7 +81,7 @@ export default function Footer() {
             </li>
             <li>
               <i className="fa-solid fa-envelope" aria-hidden="true" />
-              hello@lumiereweddings.in
+              hello@jmsweddingplanner.in
             </li>
             <li>
               <i className="fa-solid fa-phone" aria-hidden="true" />
@@ -98,7 +98,7 @@ export default function Footer() {
       <div className="footer-bottom">
         <div className="container footer-bottom-inner">
           <p>
-            <i className="fa-regular fa-copyright" aria-hidden="true" /> {new Date().getFullYear()} Lumière Weddings. All rights reserved.
+            <i className="fa-regular fa-copyright" aria-hidden="true" /> {new Date().getFullYear()} JMS Wedding Planner. All rights reserved.
           </p>
           <p>Crafted with <i className="fa-solid fa-heart footer-heart" aria-hidden="true" /> for love stories.</p>
         </div>

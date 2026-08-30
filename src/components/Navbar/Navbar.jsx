@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import { NavLink, useNavigate, useLocation } from 'react-router-dom'
 import { useTheme } from '../../context/ThemeContext'
+import { scrollToTop } from '../../utils/lenis'
 import './Navbar.css'
 
 export default function Navbar({ onBookNow }) {
   const { isDark, toggleTheme } = useTheme()
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
+  const [showBookBtn, setShowBookBtn] = useState(true)
   const navigate = useNavigate()
   const location = useLocation()
 
@@ -14,6 +16,15 @@ export default function Navbar({ onBookNow }) {
     const handler = () => setScrolled(window.scrollY > 20)
     window.addEventListener('scroll', handler, { passive: true })
     return () => window.removeEventListener('scroll', handler)
+  }, [])
+
+  // Hide the navbar "Book Now" button on mobile — removed from DOM entirely
+  useEffect(() => {
+    const mq = window.matchMedia('(min-width: 769px)')
+    const update = () => setShowBookBtn(mq.matches)
+    update()
+    mq.addEventListener('change', update)
+    return () => mq.removeEventListener('change', update)
   }, [])
 
   // Close mobile menu on any route change
@@ -42,7 +53,7 @@ export default function Navbar({ onBookNow }) {
   const handleNavClick = (to, e) => {
     if (location.pathname === to) {
       e.preventDefault()
-      window.scrollTo({ top: 0, behavior: 'smooth' })
+      scrollToTop(false)
     }
     closeMenu()
   }
@@ -54,7 +65,7 @@ export default function Navbar({ onBookNow }) {
           {/* Logo */}
           <div className="nav-logo" onClick={() => navigate('/')}>
             <i className="fa-solid fa-ring nav-logo-icon" aria-hidden="true" />
-            Lumière <em>Weddings</em>
+            JMS <em>Wedding Planner</em>
           </div>
 
           {/* Desktop links */}
@@ -83,10 +94,12 @@ export default function Navbar({ onBookNow }) {
             >
               <i className={`fa-solid ${isDark ? 'fa-sun' : 'fa-moon'}`} aria-hidden="true" />
             </button>
-            <button className="btn btn-gold nav-book-btn" onClick={onBookNow}>
-              <i className="fa-solid fa-calendar-heart" aria-hidden="true" />
-              Book Now
-            </button>
+            {showBookBtn && (
+              <button className="btn btn-gold nav-book-btn" onClick={onBookNow}>
+                <i className="fa-solid fa-calendar-heart" aria-hidden="true" />
+                Book Now
+              </button>
+            )}
             <button
               className={`hamburger ${menuOpen ? 'hamburger--open' : ''}`}
               onClick={() => setMenuOpen(prev => !prev)}
@@ -115,7 +128,7 @@ export default function Navbar({ onBookNow }) {
           <div className="mobile-drawer-header">
             <div className="mobile-drawer-logo">
               <i className="fa-solid fa-ring" aria-hidden="true" />
-              Lumière <em>Weddings</em>
+              JMS <em>Wedding Planner</em>
             </div>
             <button className="mobile-close-btn" onClick={closeMenu} aria-label="Close menu">
               <i className="fa-solid fa-xmark" aria-hidden="true" />
@@ -155,9 +168,9 @@ export default function Navbar({ onBookNow }) {
                 <i className="fa-solid fa-phone" aria-hidden="true" />
                 +91 98765 43210
               </a>
-              <a href="mailto:hello@lumiereweddings.in">
+              <a href="mailto:hello@jmsweddingplanner.in">
                 <i className="fa-solid fa-envelope" aria-hidden="true" />
-                hello@lumiereweddings.in
+                hello@jmsweddingplanner.in
               </a>
             </div>
           </div>

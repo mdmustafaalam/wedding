@@ -1,5 +1,5 @@
 /* ============================
-   LUMIÈRE WEDDINGS – GLOBAL CSS
+   JMS WEDDING PLANNER – GLOBAL CSS
    ============================ */
 
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Poppins:wght@300;400;500;600&display=swap');
@@ -66,8 +66,11 @@
 }
 
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: auto; /* smoothness is handled by Lenis */
   font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scroll-padding-top: 90px;
 }
 
 body {
@@ -77,6 +80,9 @@ body {
   transition: background var(--transition), color var(--transition);
   overflow-x: hidden;
   line-height: 1.7;
+  -webkit-tap-highlight-color: rgba(212, 175, 55, 0.18);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 h1, h2, h3, h4, h5 {
@@ -293,7 +299,26 @@ button { cursor: pointer; font-family: var(--font-body); border: none; backgroun
 ::-webkit-scrollbar-track { background: var(--bg); }
 ::-webkit-scrollbar-thumb { background: var(--gold-dark); border-radius: 3px; }
 
-/* ── Responsive breakpoints ── */
+/* ── Responsive breakpoints ──
+   Phone  < 640 · Large phone 641–768
+   Tablet 769–1024 · Laptop 1025–1400
+   Desktop 1401–1799 · TV / large ≥ 1800
+*/
+
+/* TV / very large screens — more breathing room, bigger type */
+@media (min-width: 1800px) {
+  :root {
+    --container-max: 1640px;
+    --container-pad: 96px;
+    --section-v: 140px;
+    --grid-gap: 40px;
+    --card-gap: 34px;
+  }
+  .section-title { font-size: clamp(40px, 3vw, 60px); }
+  .section-sub { max-width: 720px; }
+  .section-label { font-size: 12px; letter-spacing: 5px; }
+  .btn { padding: 14px 34px; font-size: 15px; }
+}
 
 /* Large desktop — wider grids, bigger type */
 @media (min-width: 1400px) {
@@ -305,21 +330,42 @@ button { cursor: pointer; font-family: var(--font-body); border: none; backgroun
   }
 }
 
+/* Medium tablets / small laptops — collapse multi-col grids */
+@media (max-width: 1100px) {
+  .grid-3, .grid-4 { grid-template-columns: repeat(2, 1fr); }
+}
+
 /* Medium tablet */
 @media (max-width: 1024px) {
   :root { --container-pad: 40px; }
+  .section-title { font-size: clamp(28px, 4.5vw, 44px); }
 }
 
 /* Small tablet */
 @media (max-width: 900px) {
-  .grid-3, .grid-4 { grid-template-columns: repeat(2, 1fr); }
   .section-pad { padding: 80px 0; }
 }
 
-/* Mobile */
+/* Large phone / small tablet */
+@media (max-width: 768px) {
+  :root { --container-pad: 28px; --section-v: 72px; }
+  .grid-2 { grid-template-columns: 1fr; }
+  .section-label { letter-spacing: 3px; }
+  .section-title { font-size: clamp(26px, 6.5vw, 38px); }
+}
+
+/* Phone */
 @media (max-width: 640px) {
-  .grid-3, .grid-4, .grid-2 { grid-template-columns: 1fr; }
+  .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
   .form-row { grid-template-columns: 1fr; }
   .section-pad { padding: 64px 0; }
   .btn-lg { padding: 14px 28px; font-size: 14px; }
+  .btn { white-space: normal; }
+}
+
+/* Small phone */
+@media (max-width: 400px) {
+  :root { --container-pad: 18px; --section-v: 56px; }
+  .btn { padding: 11px 22px; font-size: 13px; }
+  .section-label { font-size: 10px; }
 }

@@ -68,13 +68,20 @@
   .process-grid { grid-template-columns: repeat(2, 1fr); gap: 40px; }
   .process-grid::before { display: none; }
 }
-@media (max-width: 480px) {
+@media (max-width: 560px) {
   .process-grid { grid-template-columns: 1fr; gap: 32px; }
+  .process-step-icon { width: 60px; height: 60px; font-size: 22px; }
 }
 
 /* ── Large screen services ── */
 @media (min-width: 1400px) {
   .process-step { padding: 0 32px; }
+  .process-step-icon { width: 80px; height: 80px; font-size: 28px; }
+}
+@media (min-width: 1800px) {
+  .process-step-icon { width: 88px; height: 88px; font-size: 32px; }
+  .process-step-title { font-size: 18px; }
+  .process-step-desc { font-size: 14px; }
 }
 
 /* Equal height service cards */

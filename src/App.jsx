@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Routes, Route, useLocation } from 'react-router-dom'
 import { ThemeProvider } from './context/ThemeContext'
+import { startLenis, stopLenis, scrollToTop } from './utils/lenis'
 
 import Navbar from './components/Navbar/Navbar'
 import Footer from './components/Footer/Footer'
@@ -18,11 +19,19 @@ import Contact from './pages/Contact/Contact'
 
 import './styles/global.css'
 
+// Smooth scrolling (Lenis) for the whole page
+function useSmoothScroll() {
+  useEffect(() => {
+    startLenis()
+    return () => stopLenis()
+  }, [])
+}
+
 // Scroll to top instantly on every DIFFERENT route change
 function ScrollToTop() {
   const { pathname } = useLocation()
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'instant' })
+    scrollToTop(true)
   }, [pathname])
   return null
 }
@@ -30,6 +39,8 @@ function ScrollToTop() {
 export default function App() {
   const [loading, setLoading]         = useState(true)
   const [bookingOpen, setBookingOpen]  = useState(false)
+
+  useSmoothScroll()
 
   const openBooking  = () => setBookingOpen(true)
   const closeBooking = () => setBookingOpen(false)

@@ -11,10 +11,10 @@ export default function Loader({ onDone }) {
   }, [onDone])
 
   return (
-    <div className={`loader ${fading ? 'loader--fading' : ''}`} aria-label="Loading Lumière Weddings">
+    <div className={`loader ${fading ? 'loader--fading' : ''}`} aria-label="Loading JMS Wedding Planner">
       <div className="loader-logo">
         <i className="fa-solid fa-ring loader-ring-icon" aria-hidden="true" />
-        Lumière
+        JMS <em>Wedding Planner</em>
       </div>
       <div className="loader-spinner" aria-hidden="true">
         <div className="loader-spinner-ring" />

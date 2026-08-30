@@ -1,4 +1,4 @@
-# Lumière Weddings – React Project
+# JMS Wedding Planner – React Project
 
 ## Setup & Run
 

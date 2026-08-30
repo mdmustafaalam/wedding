@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { scrollToTop } from '../../utils/lenis'
 import './BackToTop.css'
 
 export default function BackToTop() {
@@ -10,7 +11,7 @@ export default function BackToTop() {
     return () => window.removeEventListener('scroll', handler)
   }, [])
 
-  const scrollTop = () => window.scrollTo({ top: 0, behavior: 'smooth' })
+  const scrollTop = () => scrollToTop(false)
 
   return (
     <button

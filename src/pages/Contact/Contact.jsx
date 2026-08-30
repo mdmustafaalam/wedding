@@ -30,7 +30,7 @@ export default function Contact({ onBookNow }) {
     {
       icon: 'fa-solid fa-envelope',
       title: 'Email Us',
-      lines: ['hello@lumiereweddings.in', 'bookings@lumiereweddings.in'],
+      lines: ['hello@jmsweddingplanner.in', 'bookings@jmsweddingplanner.in'],
     },
     {
       icon: 'fa-solid fa-phone',
@@ -45,10 +45,10 @@ export default function Contact({ onBookNow }) {
   ]
 
   const socials = [
-    { icon: 'fa-brands fa-instagram',   label: 'Instagram',  handle: '@lumiereweddings' },
-    { icon: 'fa-brands fa-facebook-f',  label: 'Facebook',   handle: 'Lumière Weddings' },
-    // { icon: 'fa-brands fa-pinterest-p', label: 'Pinterest',  handle: 'lumiereweddings' },
-    // { icon: 'fa-brands fa-youtube',     label: 'YouTube',    handle: 'Lumière Films' },
+    { icon: 'fa-brands fa-instagram',   label: 'Instagram',  handle: '@jmsweddingplanner' },
+    { icon: 'fa-brands fa-facebook-f',  label: 'Facebook',   handle: 'JMS Wedding Planner' },
+    // { icon: 'fa-brands fa-pinterest-p', label: 'Pinterest',  handle: 'jmsweddingplanner' },
+    // { icon: 'fa-brands fa-youtube',     label: 'YouTube',    handle: 'JMS Wedding Planner' },
   ]
 
   return (

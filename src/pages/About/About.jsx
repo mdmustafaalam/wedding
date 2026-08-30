@@ -24,7 +24,7 @@ export default function About({ onBookNow }) {
     <main>
       <PageHeader page="about"
         eyebrow="Our Story"
-        title="About <em>Lumière</em>"
+        title="About <em>JMS</em>"
         sub="A decade of extraordinary love stories, one at a time"
       />
 
@@ -40,7 +40,7 @@ export default function About({ onBookNow }) {
             </h2>
             <div className="divider" />
             <p className="about-body-text">
-              Lumière Weddings was founded in 2014 by Aditi Verma, a bridal stylist who believed every couple deserved a wedding as unique as their love story. What began as a boutique Mumbai studio has grown into one of India's most trusted names in luxury wedding planning.
+              JMS Wedding Planner was founded in 2014 by Aditi Verma, a bridal stylist who believed every couple deserved a wedding as unique as their love story. What began as a boutique Mumbai studio has grown into one of India's most trusted names in luxury wedding planning.
             </p>
             <p className="about-body-text">
               Over 500 weddings later, our philosophy remains unchanged: no two celebrations should feel alike. We listen deeply, design boldly, and execute flawlessly — bringing every couple's vision to life with heart and precision.
@@ -114,7 +114,7 @@ export default function About({ onBookNow }) {
         <div className="container">
           <div className="text-center reveal">
             <span className="section-label"><i className="fa-solid fa-star" /> Why Choose Us</span>
-            <h2 className="section-title">The Lumière <span className="gold">Difference</span></h2>
+            <h2 className="section-title">The JMS <span className="gold">Difference</span></h2>
             <div className="divider center" />
           </div>
           <div className="grid-3" style={{ marginTop: 52 }}>
@@ -137,7 +137,7 @@ export default function About({ onBookNow }) {
             <h2 className="section-title">The <span className="gold">Visionaries</span></h2>
             <div className="divider center" />
             <p className="section-sub text-center" style={{ marginTop: 16 }}>
-              The passionate minds behind every unforgettable Lumière celebration.
+              The passionate minds behind every unforgettable JMS celebration.
             </p>
           </div>
           <div className="grid-4" style={{ marginTop: 56 }}>

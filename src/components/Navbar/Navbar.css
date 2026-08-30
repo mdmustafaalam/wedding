@@ -142,7 +142,7 @@
 .mobile-overlay {
   position: fixed;
   inset: 0;
-  z-index: 999;
+  z-index: 1009;
   pointer-events: none;
   visibility: hidden;
 }
@@ -311,8 +311,18 @@
 .mobile-drawer-contact i { color: var(--gold); font-size: 13px; width: 16px; }
 
 /* ── Responsive ── */
-@media (max-width: 900px) {
+@media (max-width: 1100px) {
   .nav-links { display: none; }
-  .nav-book-btn { display: none; }
   .hamburger { display: flex; }
+}
+@media (max-width: 768px) {
+  .nav-inner { padding-left: 24px; padding-right: 24px; }
+}
+@media (max-width: 480px) {
+  .nav-inner { height: 66px; }
+  .nav-logo { font-size: 18px; gap: 8px; }
+  .nav-logo-icon { font-size: 16px; }
+  .theme-toggle { width: 36px; height: 36px; font-size: 14px; }
+  .hamburger { width: 38px; height: 38px; gap: 4px; padding: 9px; }
+  .mobile-drawer-header { min-height: 66px; padding: 16px 20px; }
 }

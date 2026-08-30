@@ -34,3 +34,6 @@
 @media (max-width: 640px) {
   .back-top { right: 20px; bottom: 90px; }
 }
+@media (min-width: 1800px) {
+  .back-top { width: 52px; height: 52px; font-size: 16px; }
+}
