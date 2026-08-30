@@ -43,7 +43,7 @@
 .nav-logo em { font-style: italic; font-weight: 400; }
 .nav-logo-icon { font-size: 18px; }
 .nav-logo-img {
-  width: 95px;
+  width: 85px;
   border-radius: 10px;
   object-fit: cover;
   flex-shrink: 0;
@@ -206,8 +206,7 @@
 .mobile-drawer-logo em { font-style: italic; font-weight: 400; }
 .mobile-drawer-logo i { font-size: 16px; }
 .mobile-drawer-logo-img {
-  width: 34px;
-  height: 34px;
+  width: 85px;
   border-radius: 8px;
   object-fit: cover;
   flex-shrink: 0;
@@ -330,6 +329,8 @@
 }
 @media (max-width: 768px) {
   .nav-inner { padding-left: 24px; padding-right: 24px; }
+  .nav-logo em,
+  .mobile-drawer-logo em { display: none; }
 }
 @media (max-width: 480px) {
   .nav-inner { height: 66px; }
