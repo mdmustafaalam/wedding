@@ -109,6 +109,7 @@
 }
 
 .footer-bottom {
+  margin-top: 15px;
   border-top: 1px solid var(--border);
   padding: 16px 0;
 }
