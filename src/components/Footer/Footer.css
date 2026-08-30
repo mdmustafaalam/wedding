@@ -24,6 +24,12 @@
 }
 .footer-logo em { font-style: italic; font-weight: 400; }
 .footer-logo i { font-size: 18px; }
+.footer-logo-img {
+  width: 95px;
+  border-radius: 10px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
 
 .footer-desc {
   color: var(--text-muted);

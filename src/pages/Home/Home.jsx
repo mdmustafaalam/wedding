@@ -19,93 +19,105 @@ import ourStory from '../../assets/wedding/b3.jpg'
    - No key changes on cards — stable DOM = stable text
 */
 function TestimonialSlider() {
-  const [current, setCurrent] = useState(0)
-  const [isTransitioning, setIsTransitioning] = useState(false)
-  const timerRef = useRef(null)
   const total = testimonials.length
+  const stageRef = useRef(null)
+  const dRef = useRef(total)
+  const timerRef = useRef(null)
+  const [d, setD] = useState(total)
+  const [stageW, setStageW] = useState(0)
+  const [noAnim, setNoAnim] = useState(false)
+  const lo = total
+  const hi = 2 * total - 1
 
-  const goTo = (idx) => {
-    if (isTransitioning) return
-    setIsTransitioning(true)
-    setCurrent((idx + total) % total)
-    setTimeout(() => setIsTransitioning(false), 500)
+  /* Move by a step; positions live in [lo, hi] over a 3x-repeated track so the
+     loop is seamless — wrapping to the opposite end is an identical frame that
+     folds back instantly (transition suppressed) instead of flying across. */
+  const stepBy = (delta, suppress = true) => {
+    const from = dRef.current
+    let target = from + delta
+    target = ((target - lo) % total + total) % total + lo
+    if (suppress && Math.abs(target - from) > 1) {
+      setNoAnim(true)
+      setTimeout(() => setNoAnim(false), 60)
+    }
+    dRef.current = target
+    setD(target)
+  }
+
+  const restartTimer = () => {
+    clearInterval(timerRef.current)
+    timerRef.current = setInterval(() => stepBy(1, true), 4500)
   }
 
   useEffect(() => {
-    timerRef.current = setInterval(() => setCurrent(c => (c + 1) % total), 4500)
-    return () => clearInterval(timerRef.current)
-  }, [total])
+    const measure = () => {
+      if (stageRef.current) setStageW(stageRef.current.clientWidth)
+    }
+    measure()
+    window.addEventListener('resize', measure)
+    restartTimer()
+    return () => {
+      window.removeEventListener('resize', measure)
+      clearInterval(timerRef.current)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
-  const handleNav = (idx) => {
-    clearInterval(timerRef.current)
-    goTo(idx)
-    timerRef.current = setInterval(() => setCurrent(c => (c + 1) % total), 4500)
-  }
-
-  // Position each card: center=0, left=-1, right=+1, others hidden
-  const getPos = (idx) => {
-    const diff = ((idx - current) % total + total) % total
-    if (diff === 0) return 'center'
-    if (diff === 1) return 'right'
-    if (diff === total - 1) return 'left'
-    return 'hidden'
-  }
+  /* 3-card view on every screen: center card ~67% of stage, both neighbours peek in the margins */
+  const W = Math.min(stageW * 0.32, 960) || 320
+  const offset = (stageW - W) / 2 - d * W
+  const slots = testimonials.concat(testimonials, testimonials)
 
   return (
     <div className="home-tslider">
-      <div className="home-tslider-stage">
-        {testimonials.map((t, idx) => {
-          const pos = getPos(idx)
-          return (
-            <div
-              key={idx}
-              className={`home-tcard home-tcard--${pos}`}
-              onClick={() => pos !== 'center' && handleNav(idx)}
-            >
-              <div className="home-tcard-quote">
-                <i className="fa-solid fa-quote-left" />
-              </div>
-              <div className="home-tcard-stars">
-                {Array.from({ length: t.rating }).map((_, i) => (
-                  <i key={i} className="fa-solid fa-star" />
-                ))}
-              </div>
-              <p className="home-tcard-text">"{t.text}"</p>
-              <div className="home-tcard-author">
-                <div className="home-tcard-avatar">{t.initials}</div>
-                <div>
-                  <div className="home-tcard-name">{t.name}</div>
-                  <div className="home-tcard-date">
-                    <i className="fa-regular fa-calendar" />
-                    {t.date}
+      <div ref={stageRef} className={`home-tslider-stage${noAnim ? ' home-tslider--noanim' : ''}`}>
+        <div className="home-tcard-track" style={{ transform: `translateX(${offset}px)` }}>
+          {slots.map((t, k) => {
+            const dist = k - d
+            const cls = dist === 0 ? 'center' : dist === 1 || dist === -1 ? 'side' : 'far'
+            return (
+              <div
+                key={k}
+                className={`home-tcard home-tcard--${cls}`}
+                style={{ width: W }}
+                onClick={() => {
+                  if (dist === 1) stepBy(1)
+                  else if (dist === -1) stepBy(-1)
+                }}
+              >
+                <div className="home-tcard-quote">
+                  <i className="fa-solid fa-quote-left" />
+                </div>
+                <div className="home-tcard-stars">
+                  {Array.from({ length: t.rating }).map((_, i) => (
+                    <i key={i} className="fa-solid fa-star" />
+                  ))}
+                </div>
+                <p className="home-tcard-text">"{t.text}"</p>
+                <div className="home-tcard-author">
+                  <div className="home-tcard-avatar">{t.initials}</div>
+                  <div>
+                    <div className="home-tcard-name">{t.name}</div>
+                    <div className="home-tcard-date">
+                      <i className="fa-regular fa-calendar" />
+                      {t.date}
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          )
-        })}
-      </div>
-
-      {/* Dots */}
-      <div className="home-tslider-dots">
-        {testimonials.map((_, i) => (
-          <button
-            key={i}
-            className={`home-tdot ${i === current ? 'home-tdot--active' : ''}`}
-            onClick={() => handleNav(i)}
-            aria-label={`Testimonial ${i + 1}`}
-          />
-        ))}
+            )
+          })}
+        </div>
       </div>
 
       {/* Arrows */}
       <button className="home-tarrow home-tarrow--prev"
-        onClick={() => handleNav((current - 1 + total) % total)}
+        onClick={() => stepBy(-1)}
         aria-label="Previous">
         <i className="fa-solid fa-chevron-left" />
       </button>
       <button className="home-tarrow home-tarrow--next"
-        onClick={() => handleNav((current + 1) % total)}
+        onClick={() => stepBy(1)}
         aria-label="Next">
         <i className="fa-solid fa-chevron-right" />
       </button>

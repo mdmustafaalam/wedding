@@ -1,8 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { useTheme } from '../../context/ThemeContext'
 import './Footer.css'
 
 export default function Footer() {
+  const { isDark } = useTheme()
   const quickLinks = [
     { to: '/',             label: 'Home' },
     { to: '/about',        label: 'About Us' },
@@ -29,8 +31,9 @@ export default function Footer() {
       <div className="footer-top container">
         <div className="footer-brand-col">
           <div className="footer-logo">
-            <i className="fa-solid fa-ring" aria-hidden="true" />
-            JMS <em>Wedding Planner</em>
+            <img src="/jmsDarak.png" alt="JMS Wedding Planner" className="footer-logo-img" style={isDark ? { display: 'none' } : undefined} />
+            <img src="/jmsLight.png" alt="JMS Wedding Planner" className="footer-logo-img" style={isDark ? undefined : { display: 'none' }} />
+            <em>Wedding Planner</em>
           </div>
           <p className="footer-desc">
             Crafting extraordinary love stories since 2014. Your dream wedding is our greatest creation — elegant, personal, and unforgettable.

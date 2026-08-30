@@ -64,8 +64,9 @@ export default function Navbar({ onBookNow }) {
         <div className="nav-inner">
           {/* Logo */}
           <div className="nav-logo" onClick={() => navigate('/')}>
-            <i className="fa-solid fa-ring nav-logo-icon" aria-hidden="true" />
-            JMS <em>Wedding Planner</em>
+            <img src="/jmsDarak.png" alt="JMS Wedding Planner" className="nav-logo-img" style={isDark ? { display: 'none' } : undefined} />
+            <img src="/jmsLight.png" alt="JMS Wedding Planner" className="nav-logo-img" style={isDark ? undefined : { display: 'none' }} />
+            <em>Wedding Planner</em>
           </div>
 
           {/* Desktop links */}
@@ -127,7 +128,8 @@ export default function Navbar({ onBookNow }) {
           {/* Drawer header */}
           <div className="mobile-drawer-header">
             <div className="mobile-drawer-logo">
-              <i className="fa-solid fa-ring" aria-hidden="true" />
+              <img src="/jmsDarak.png" alt="JMS Wedding Planner" className="mobile-drawer-logo-img" style={isDark ? { display: 'none' } : undefined} />
+              <img src="/jmsLight.png" alt="JMS Wedding Planner" className="mobile-drawer-logo-img" style={isDark ? undefined : { display: 'none' }} />
               JMS <em>Wedding Planner</em>
             </div>
             <button className="mobile-close-btn" onClick={closeMenu} aria-label="Close menu">

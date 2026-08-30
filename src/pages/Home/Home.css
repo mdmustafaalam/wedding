@@ -133,7 +133,7 @@
 /* ── Testimonials section ── */
 .home-testimonials { background: var(--bg-alt); }
 
-/* Stage: fixed viewport, overflow hidden, positions cards with CSS */
+/* Track: all cards laid out in a flex row, shifted by transform — no cross-screen fly */
 .home-tslider {
   position: relative;
   padding: 20px 0 60px;
@@ -145,11 +145,20 @@
   overflow: hidden;
 }
 
-/* ── Every card: absolutely positioned, transitions via transform ── */
-.home-tcard {
+.home-tcard-track {
   position: absolute;
-  top: 50%;
-  left: 50%;
+  top: 0;
+  left: 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+}
+
+/* ── Every card: stable content, only transform/opacity animate ── */
+.home-tcard {
+  flex: 0 0 auto;
   background: var(--card-bg);
   border: 1px solid var(--border);
   border-radius: 20px;
@@ -157,59 +166,42 @@
   display: flex;
   flex-direction: column;
   gap: 14px;
-  /* Transition ONLY transform and opacity — content stays still */
-  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1),
-              opacity   0.5s ease,
-              box-shadow 0.5s ease,
-              border-color 0.5s ease;
+  transition: opacity 0.55s ease,
+              transform 0.55s ease,
+              box-shadow 0.55s ease,
+              border-color 0.55s ease;
   pointer-events: none;
   will-change: transform, opacity;
-  /* Base: hidden far off-screen */
-  transform: translate(-50%, -50%) translateX(200%) scale(0.75);
-  opacity: 0;
 }
 
-/* Center card — large, elevated, pointer-events on */
+/* Center card — large, elevated */
 .home-tcard--center {
-  width: clamp(300px, 40%, 460px);
-  z-index: 10;
-  transform: translate(-50%, -50%) translateX(0) scale(1);
-  opacity: 1;
-  pointer-events: none;
-  box-shadow: 0 24px 72px rgba(0,0,0,0.14);
   border-color: var(--border-strong);
+  box-shadow: 0 24px 72px rgba(0,0,0,0.14);
+  pointer-events: none;
 }
 
-/* Left peek card */
-.home-tcard--left {
-  width: clamp(220px, 28%, 320px);
-  z-index: 5;
-  transform: translate(-50%, -50%) translateX(calc(-100% - 20px)) scale(0.88);
+/* Side peek cards */
+.home-tcard--side {
+  transform: scale(0.9);
   opacity: 0.55;
   pointer-events: auto;
   cursor: pointer;
-  box-shadow: none;
 }
-.home-tcard--left:hover { opacity: 0.75; }
+.home-tcard--side:hover { opacity: 0.75; }
 
-/* Right peek card */
-.home-tcard--right {
-  width: clamp(220px, 28%, 320px);
-  z-index: 5;
-  transform: translate(-50%, -50%) translateX(calc(100% + 20px)) scale(0.88);
-  opacity: 0.55;
-  pointer-events: auto;
-  cursor: pointer;
-  box-shadow: none;
-}
-.home-tcard--right:hover { opacity: 0.75; }
-
-/* Hidden cards */
-.home-tcard--hidden {
-  transform: translate(-50%, -50%) translateX(200%) scale(0.7);
+/* Far offscreen cards */
+.home-tcard--far {
+  transform: scale(0.85);
   opacity: 0;
   pointer-events: none;
   z-index: 1;
+}
+
+/* When folding the infinite loop, jump instantly (no streak / flicker) */
+.home-tslider--noanim .home-tcard-track,
+.home-tslider--noanim .home-tcard {
+  transition: none !important;
 }
 
 /* ── Card inner content — never animated, always stable ── */
@@ -219,15 +211,13 @@
   opacity: 0.22;
   line-height: 1;
 }
-.home-tcard--left .home-tcard-quote,
-.home-tcard--right .home-tcard-quote {
+.home-tcard--side .home-tcard-quote {
   color: var(--text-light);
   opacity: 0.4;
 }
 
 .home-tcard-stars { color: var(--gold); font-size: 12px; letter-spacing: 2px; }
-.home-tcard--left .home-tcard-stars,
-.home-tcard--right .home-tcard-stars { color: var(--text-light); }
+.home-tcard--side .home-tcard-stars { color: var(--text-light); }
 
 .home-tcard-text {
   font-size: 14px;
@@ -240,9 +230,8 @@
   -webkit-line-clamp: 5;
   -webkit-box-orient: vertical;
 }
-.home-tcard--left .home-tcard-text,
-.home-tcard--right .home-tcard-text {
-  -webkit-line-clamp: 4;
+.home-tcard--side .home-tcard-text {
+  -webkit-line-clamp: 5;
   font-size: 13px;
   color: var(--text-light);
 }
@@ -264,8 +253,7 @@
   font-family: var(--font-heading);
   font-weight: 700; font-size: 13px; color: #fff;
 }
-.home-tcard--left .home-tcard-avatar,
-.home-tcard--right .home-tcard-avatar {
+.home-tcard--side .home-tcard-avatar {
   width: 34px; height: 34px; min-width: 34px;
   font-size: 11px;
   background: var(--ivory-dark);
@@ -275,33 +263,14 @@
 .home-tcard-name {
   font-size: 14px; font-weight: 600; color: var(--text);
 }
-.home-tcard--left .home-tcard-name,
-.home-tcard--right .home-tcard-name { font-size: 12px; color: var(--text-muted); }
+.home-tcard--side .home-tcard-name { font-size: 12px; color: var(--text-muted); }
 
 .home-tcard-date {
   font-size: 12px; color: var(--text-light);
   display: flex; align-items: center; gap: 5px; margin-top: 2px;
 }
 .home-tcard-date i { color: var(--gold); font-size: 10px; }
-.home-tcard--left .home-tcard-date,
-.home-tcard--right .home-tcard-date { font-size: 11px; }
-
-/* ── Dots ── */
-.home-tslider-dots {
-  display: flex;
-  gap: 8px;
-  justify-content: center;
-  margin-top: 24px;
-}
-.home-tdot {
-  width: 8px; height: 8px;
-  border-radius: 50%;
-  background: var(--border-strong);
-  border: none; cursor: pointer;
-  transition: all 0.25s;
-  padding: 0;
-}
-.home-tdot--active { background: var(--gold); width: 24px; border-radius: 4px; }
+.home-tcard--side .home-tcard-date { font-size: 11px; }
 
 /* ── Arrow buttons ── */
 .home-tarrow {
@@ -330,15 +299,11 @@
 
 @media (max-width: 900px) {
   .home-tslider-stage { height: 420px; }
-  .home-tcard--left,
-  .home-tcard--right { display: none; }
-  .home-tcard--center { width: calc(100% - 24px); }
   .home-tslider { padding: 20px 52px 52px; }
 }
 @media (max-width: 640px) {
   .home-tslider { padding: 16px 44px 48px; }
   .home-tslider-stage { height: 470px; }
-  .home-tcard--center { width: 100%; }
   .home-tcard { padding: 28px 22px; }
 }
 @media (max-width: 400px) {

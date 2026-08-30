@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react'
+import { useTheme } from '../../context/ThemeContext'
 import './Loader.css'
 
 export default function Loader({ onDone }) {
+  const { isDark } = useTheme()
   const [fading, setFading] = useState(false)
 
   useEffect(() => {
@@ -13,8 +15,9 @@ export default function Loader({ onDone }) {
   return (
     <div className={`loader ${fading ? 'loader--fading' : ''}`} aria-label="Loading JMS Wedding Planner">
       <div className="loader-logo">
-        <i className="fa-solid fa-ring loader-ring-icon" aria-hidden="true" />
-        JMS <em>Wedding Planner</em>
+        <img src="/jmsDarak.png" alt="JMS Wedding Planner" className="loader-logo-img" style={isDark ? { display: 'none' } : undefined} />
+        <img src="/jmsLight.png" alt="JMS Wedding Planner" className="loader-logo-img" style={isDark ? undefined : { display: 'none' }} />
+        <em>Wedding Planner</em>
       </div>
       <div className="loader-spinner" aria-hidden="true">
         <div className="loader-spinner-ring" />
