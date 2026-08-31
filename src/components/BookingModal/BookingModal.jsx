@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { getLenis } from '../../utils/lenis'
+import { useTheme } from '../../context/ThemeContext'
 import './BookingModal.css'
 
 const initialForm = {
@@ -8,6 +9,7 @@ const initialForm = {
 }
 
 export default function BookingModal({ isOpen, onClose }) {
+  const { isDark } = useTheme()
   const [form, setForm] = useState(initialForm)
   const [submitted, setSubmitted] = useState(false)
 
@@ -52,9 +54,18 @@ export default function BookingModal({ isOpen, onClose }) {
         {/* ── Sticky header with close button ── */}
         <div className="modal-sticky-header">
           <div className="modal-header-left">
-            <div className="modal-icon-sm">
-              <i className="fa-solid fa-ring" aria-hidden="true" />
-            </div>
+            <img
+              src="/jmsDarak.png"
+              alt="JMS Wedding Planner"
+              className="modal-logo"
+              style={isDark ? { display: 'none' } : undefined}
+            />
+            <img
+              src="/jmsLight.png"
+              alt="JMS Wedding Planner"
+              className="modal-logo"
+              style={isDark ? undefined : { display: 'none' }}
+            />
             <div>
               <h2 className="modal-title">Book a <em>Consultation</em></h2>
               {!submitted && <p className="modal-sub">Tell us about your dream day and we'll make it real.</p>}
@@ -66,7 +77,7 @@ export default function BookingModal({ isOpen, onClose }) {
         </div>
 
         {/* ── Scrollable body ── */}
-        <div className="modal-body">
+        <div className="modal-body" data-lenis-prevent>
           {submitted ? (
             <div className="booking-success">
               <div className="success-icon">
@@ -105,7 +116,7 @@ export default function BookingModal({ isOpen, onClose }) {
                   <label htmlFor="b-phone">
                     <i className="fa-solid fa-phone" aria-hidden="true" /> Phone
                   </label>
-                  <input id="b-phone" name="phone" type="tel" placeholder="+91 98765 43210"
+                  <input id="b-phone" name="phone" type="tel" placeholder="+91 73248 84890"
                     value={form.phone} onChange={handleChange} required />
                 </div>
                 <div className="form-group">

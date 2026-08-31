@@ -11,6 +11,10 @@ const CATEGORIES = [
   { id: 'couples',     label: 'Couples',     icon: 'fa-solid fa-heart' },
 ]
 
+const countFor = (id) => id === 'all'
+  ? galleryItems.length
+  : galleryItems.filter(g => g.category === id).length
+
 export default function GalleryGrid({ limit }) {
   const [active, setActive] = useState('all')
   const [lightbox, setLightbox] = useState(null)
@@ -50,6 +54,7 @@ export default function GalleryGrid({ limit }) {
           >
             <i className={cat.icon} aria-hidden="true" />
             {cat.label}
+            <span className="filter-count">{countFor(cat.id)}</span>
           </button>
         ))}
       </div>

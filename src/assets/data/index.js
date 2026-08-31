@@ -185,7 +185,7 @@ export const team = [
 
 export const stats = [
   { number: '500+', label: 'Weddings Planned',    icon: 'fa-solid fa-ring' },
-  { number: '10+',  label: 'Years Experience',     icon: 'fa-solid fa-award' },
+  { number: '30+', label: 'Years Experience',     icon: 'fa-solid fa-award' },
   { number: '1000+', label: 'Happy Couples',       icon: 'fa-solid fa-heart' },
   { number: '50+',  label: 'Professional Vendors', icon: 'fa-solid fa-handshake' },
 ]

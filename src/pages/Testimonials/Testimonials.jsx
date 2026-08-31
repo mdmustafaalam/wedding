@@ -88,18 +88,6 @@ function FanCarousel() {
         })}
       </div>
 
-      {/* Navigation dots */}
-      <div className="fan-dots">
-        {testimonials.map((_, i) => (
-          <button
-            key={i}
-            className={`fan-dot ${i === current ? 'fan-dot--active' : ''}`}
-            onClick={() => handleNav(i)}
-            aria-label={`Go to testimonial ${i + 1}`}
-          />
-        ))}
-      </div>
-
       {/* Arrows */}
       <button className="fan-arrow fan-arrow--left"
         onClick={() => handleNav((current - 1 + total) % total)}
@@ -180,31 +168,29 @@ export default function Testimonials({ onBookNow }) {
             ))}
           </div>
 
-          {/* Rating summary */}
-          <div className="rating-summary card reveal" style={{ marginTop: 64 }}>
-            <div className="rating-score">
-              <span className="rating-num">4.9</span>
-              <div className="rating-stars">
-                {Array.from({length:5}).map((_,i)=>(
-                  <i key={i} className="fa-solid fa-star" aria-hidden="true" />
-                ))}
+          {/* Get in Touch golden banner */}
+          <div className="t-cta reveal" style={{ marginTop: 64 }}>
+            <div className="t-cta-content">
+              <span className="t-cta-label">
+                <i className="fa-solid fa-heart" aria-hidden="true" /> Let's Plan Together
+              </span>
+              <h3 className="t-cta-title">
+                Ready to Write Your Own <em>Love Story?</em>
+              </h3>
+              <p className="t-cta-sub">
+                Our team is here to turn your dream wedding into reality. Reach out for a
+                complimentary consultation today.
+              </p>
+              <div className="t-cta-actions">
+                <button className="btn t-cta-btn" onClick={onBookNow}>
+                  <i className="fa-solid fa-calendar-heart" aria-hidden="true" />
+                  Get in Touch
+                </button>
+                <a className="btn t-cta-btn t-cta-btn--ghost" href="tel:+917324884890">
+                  <i className="fa-solid fa-phone" aria-hidden="true" />
+                  Call Now
+                </a>
               </div>
-              <span className="rating-sub">Overall Rating</span>
-            </div>
-            <div className="rating-divider" />
-            <div className="rating-platforms">
-              {[
-                { icon:'fa-brands fa-google',  name:'Google',      score:'4.9', count:'480+ reviews' },
-                { icon:'fa-solid fa-star',      name:'WeddingWire', score:'4.8', count:'380+ reviews' },
-                { icon:'fa-solid fa-thumbs-up', name:'JustDial',    score:'5.0', count:'340+ reviews' },
-              ].map(p=>(
-                <div key={p.name} className="rating-platform">
-                  <i className={p.icon} aria-hidden="true" />
-                  <div className="platform-name">{p.name}</div>
-                  <div className="platform-score">{p.score} ★</div>
-                  <div className="platform-count">{p.count}</div>
-                </div>
-              ))}
             </div>
           </div>
         </div>

@@ -1,11 +1,16 @@
 import React from 'react'
 import './FloatBookBtn.css'
 
-export default function FloatBookBtn({ onClick }) {
+export default function FloatBookBtn() {
   return (
-    <button className="float-book-btn" onClick={onClick} aria-label="Open booking form">
-      <i className="fa-solid fa-ring" aria-hidden="true" />
-      <span>Book Now</span>
-    </button>
+    <a
+      className="float-book-btn"
+      href="https://wa.me/917324884890"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Chat on WhatsApp"
+    >
+      <i className="fa-brands fa-whatsapp" aria-hidden="true" />
+    </a>
   )
 }

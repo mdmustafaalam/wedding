@@ -1,37 +1,57 @@
 .float-book-btn {
   position: fixed;
-  bottom: 32px;
+  bottom: 25px;
   right: 32px;
   z-index: 900;
-  background: var(--gold);
-  color: #ffffff;
-  border: none;
-  padding: 14px 22px;
-  border-radius: var(--radius-pill);
-  font-weight: 600;
-  font-size: 14px;
+  background: var(--bg);
+  color: var(--gold);
+  border: 1px solid var(--gold);
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
   font-family: var(--font-body);
   cursor: pointer;
-  box-shadow: 0 4px 24px rgba(212, 175, 55, 0.5);
+  box-shadow: 0 4px 24px var(--shadow);
   display: flex;
   align-items: center;
-  gap: 8px;
+  justify-content: center;
   transition: all 0.25s ease;
+  text-decoration: none;
+  animation: wa-pop 1.8s ease-in-out infinite;
 }
 .float-book-btn:hover {
-  background: var(--gold-light);
+  color: var(--gold-light);
   transform: translateY(-3px);
-  box-shadow: 0 8px 32px rgba(212, 175, 55, 0.65);
+  box-shadow: 0 8px 32px var(--shadow);
+  animation: none;
 }
-.float-book-btn i { font-size: 15px; }
+.float-book-btn i {
+  font-size: 25px;
+  animation: wa-icon-pop 1.8s ease-in-out infinite;
+}
+.float-book-btn:hover i { animation: none; }
+
+@keyframes wa-pop {
+  0%, 100% { box-shadow: 0 4px 24px var(--shadow), 0 0 0 0 rgba(212, 175, 55, 0.45); }
+  50%      { box-shadow: 0 4px 24px var(--shadow), 0 0 0 16px rgba(212, 175, 55, 0); }
+}
+
+@keyframes wa-icon-pop {
+  0%, 100% { transform: scale(1); }
+  45%      { transform: scale(1.22); }
+  70%      { transform: scale(0.95); }
+  90%      { transform: scale(1.08); }
+}
 
 @media (max-width: 640px) {
-  .float-book-btn { right: 20px; bottom: 20px; padding: 12px 18px; font-size: 13px; }
+  .float-book-btn { right: 20px; bottom: 20px; width: 54px; height: 54px; }
+  .float-book-btn i { font-size: 27px; }
 }
 @media (max-width: 380px) {
-  .float-book-btn { right: 16px; bottom: 16px; padding: 11px 15px; }
-  .float-book-btn i { font-size: 13px; }
+  .float-book-btn { right: 16px; bottom: 16px; width: 50px; height: 50px; }
+  .float-book-btn i { font-size: 25px; }
 }
 @media (min-width: 1800px) {
-  .float-book-btn { padding: 16px 28px; font-size: 15px; }
+  .float-book-btn { width: 66px; height: 66px; }
+  .float-book-btn i { font-size: 33px; }
 }

@@ -36,7 +36,7 @@ export default function Footer() {
             <em>Wedding Planner</em>
           </div>
           <p className="footer-desc">
-            Crafting extraordinary love stories since 2014. Your dream wedding is our greatest creation — elegant, personal, and unforgettable.
+            Crafting extraordinary love stories since 1990. Your dream wedding is our greatest creation — elegant, personal, and unforgettable.
           </p>
           <div className="social-row">
             {socials.map(s => (
@@ -80,7 +80,7 @@ export default function Footer() {
           <ul className="footer-contact">
             <li>
               <i className="fa-solid fa-location-dot" aria-hidden="true" />
-              42 Rose Garden Lane, Bandra West, Mumbai 400050
+              Baba Garib Asthan, Near Sudha Dairy, Muzaffarpur, Bihar 842001
             </li>
             <li>
               <i className="fa-solid fa-envelope" aria-hidden="true" />
@@ -88,11 +88,11 @@ export default function Footer() {
             </li>
             <li>
               <i className="fa-solid fa-phone" aria-hidden="true" />
-              +91 98765 43210
+              +91 73248 84890
             </li>
             <li>
               <i className="fa-solid fa-clock" aria-hidden="true" />
-              Mon–Sat: 9AM – 7PM
+              Open 24/7 — Always Available
             </li>
           </ul>
         </div>

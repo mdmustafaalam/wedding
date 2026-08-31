@@ -71,7 +71,7 @@ export default function App() {
       </Routes>
 
       <Footer />
-      <FloatBookBtn onClick={openBooking} />
+      <FloatBookBtn />
       <BackToTop />
       <BookingModal isOpen={bookingOpen} onClose={closeBooking} />
     </ThemeProvider>

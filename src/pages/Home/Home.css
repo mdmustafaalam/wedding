@@ -300,6 +300,11 @@
 @media (max-width: 900px) {
   .home-tslider-stage { height: 420px; }
   .home-tslider { padding: 20px 52px 52px; }
+  .home-tcard--center,
+  .home-tcard--side,
+  .home-tcard--far { box-shadow: none; }
+  .home-tcard--side,
+  .home-tcard--far { opacity: 0; transform: scale(0.9); pointer-events: none; }
 }
 @media (max-width: 640px) {
   .home-tslider { padding: 16px 44px 48px; }

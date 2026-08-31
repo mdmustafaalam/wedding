@@ -174,10 +174,10 @@ export default function Hero({ onBookNow }) {
       <div className="hero-ring hero-ring-2" aria-hidden="true" />
 
       {/* ── LEFT CONTENT ── */}
-      <div className={`hero-content ${animating ? 'hero-content--fade' : ''}`}>
+      <div className="hero-content">
         <div className="hero-badge">
           <i className="fa-solid fa-star" aria-hidden="true" />
-          Est. 2014 · Mumbai, India · 500+ Weddings
+          Est. 1990 · Muzaffarpur, India · 500+ Weddings
           <i className="fa-solid fa-star" aria-hidden="true" />
         </div>
 
@@ -197,7 +197,7 @@ export default function Hero({ onBookNow }) {
             <i className="fa-solid fa-calendar-heart" aria-hidden="true" />
             Book Now
           </button>
-          <button className="btn hero-btn-outline btn-lg"
+          <button className="btn hero-btn-outline btn-lg" style={{ border: '1px solid' }}
             onClick={() => window.location.href = '/services'}>
             <i className="fa-solid fa-wand-magic-sparkles" aria-hidden="true" />
             Explore Services
@@ -207,7 +207,7 @@ export default function Hero({ onBookNow }) {
         <div className="hero-stats">
           {[
             { n:'500+', l:'Weddings' },
-            { n:'10+',  l:'Years'    },
+            { n:'30+',  l:'Years'    },
             { n:'4.9★', l:'Rating'   },
           ].map(s => (
             <div key={s.l} className="hero-stat">

@@ -25,7 +25,7 @@ export default function Contact({ onBookNow }) {
     {
       icon: 'fa-solid fa-location-dot',
       title: 'Visit Our Studio',
-      lines: ['42 Rose Garden Lane, Bandra West', 'Mumbai, Maharashtra 400050'],
+      lines: ['Baba Garib Asthan, Near Sudha Dairy', 'Muzaffarpur, Bihar 842001'],
     },
     {
       icon: 'fa-solid fa-envelope',
@@ -35,12 +35,12 @@ export default function Contact({ onBookNow }) {
     {
       icon: 'fa-solid fa-phone',
       title: 'Call Us',
-      lines: ['+91 98765 43210', '+91 91234 56789'],
+      lines: ['+91 73248 84890'],
     },
     {
       icon: 'fa-solid fa-clock',
       title: 'Working Hours',
-      lines: ['Monday – Saturday: 9AM – 7PM', 'Sunday: By Appointment Only'],
+      lines: ['Open 24/7 — Always Available'],
     },
   ]
 
@@ -114,7 +114,7 @@ export default function Contact({ onBookNow }) {
             {/* Map placeholder */}
             {/* <div className="map-placeholder">
               <i className="fa-solid fa-map-location-dot map-icon" aria-hidden="true" />
-              <p className="map-address">42 Rose Garden Lane, Bandra West, Mumbai</p>
+              <p className="map-address">Baba Garib Asthan, Near Sudha Dairy, Muzaffarpur, Bihar 842001</p>
               <p className="map-note">Interactive map available in production build</p>
             </div> */}
           </div>
@@ -163,7 +163,7 @@ export default function Contact({ onBookNow }) {
                       <label htmlFor="c-phone">
                         <i className="fa-solid fa-phone" aria-hidden="true" /> Phone Number
                       </label>
-                      <input id="c-phone" name="phone" type="tel" placeholder="+91 98765 43210"
+                      <input id="c-phone" name="phone" type="tel" placeholder="+91 73248 84890"
                         value={form.phone} onChange={handleChange} />
                     </div>
                     <div className="form-group">
@@ -211,7 +211,7 @@ export default function Contact({ onBookNow }) {
       <CTASection
         onBookNow={onBookNow}
         title="Prefer to Talk? <em>Call Us.</em>"
-        sub="Our planning team is available Monday to Saturday, 9AM to 7PM."
+        sub="Our planning team is available around the clock, 24/7."
         primaryLabel="Book a Call"
       />
     </main>

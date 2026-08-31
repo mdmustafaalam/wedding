@@ -22,6 +22,24 @@
   transition: all 0.22s ease;
 }
 .filter-btn i { font-size: 12px; }
+.filter-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 6px;
+  border-radius: 10px;
+  background: var(--border-strong);
+  color: var(--text-muted);
+  font-size: 11px;
+  font-weight: 600;
+  margin-left: 2px;
+}
+.filter-btn--active .filter-count {
+  background: rgba(17, 17, 17, 0.15);
+  color: #111;
+}
 .filter-btn:hover {
   border-color: var(--gold);
   color: var(--gold);

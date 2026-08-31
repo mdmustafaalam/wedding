@@ -30,50 +30,80 @@ export default function About({ onBookNow }) {
 
       {/* ── Story with real dummy image ── */}
       <section className="section-pad">
-        <div className="container about-story-grid">
-          <div className="reveal">
+        <div className="container">
+          <div className="text-center reveal" style={{ marginBottom: 48 }}>
             <span className="section-label">
               <i className="fa-solid fa-book-open" aria-hidden="true" /> Who We Are
             </span>
             <h2 className="section-title">
-              Born from a <span className="gold">Passion</span><br />for Love
+              Born from a <span className="gold">Passion</span> for Love
             </h2>
-            <div className="divider" />
-            <p className="about-body-text">
-              JMS Wedding Planner was founded in 2014 by Aditi Verma, a bridal stylist who believed every couple deserved a wedding as unique as their love story. What began as a boutique Mumbai studio has grown into one of India's most trusted names in luxury wedding planning.
-            </p>
-            <p className="about-body-text">
-              Over 500 weddings later, our philosophy remains unchanged: no two celebrations should feel alike. We listen deeply, design boldly, and execute flawlessly — bringing every couple's vision to life with heart and precision.
-            </p>
-            <button className="btn btn-gold" onClick={onBookNow} style={{ marginTop: 8 }}>
-              <i className="fa-solid fa-calendar-heart" aria-hidden="true" />
-              Start Your Story
-            </button>
+            <div className="divider center" />
           </div>
+          <div className="about-story-grid">
+            <div className="reveal">
+              <p className="about-body-text" style={{ marginTop: 0 }}>
+                JMS Wedding Planner was founded in 1990 by Aditi Verma, a bridal stylist who believed every couple deserved a wedding as unique as their love story. What began as a boutique Mumbai studio has grown into one of India's most trusted names in luxury wedding planning.
+              </p>
+              <p className="about-body-text">
+                Over 500 weddings later, our philosophy remains unchanged: no two celebrations should feel alike. We listen deeply, design boldly, and execute flawlessly — bringing every couple's vision to life with heart and precision.
+              </p>
 
-          {/* Real dummy image with overlays */}
-          <div className="about-story-visual reveal reveal-delay-2">
-            <div className="about-img-wrap">
-              <img
-                src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=800&q=80"
-                alt="Luxury wedding ceremony"
-                className="about-story-img"
-              />
-              <div className="about-img-overlay" />
-              <div className="about-img-stat-card">
-                <div className="about-img-stat">
-                  <span className="about-stat-n">500+</span>
-                  <span className="about-stat-l">Weddings Planned</span>
+              {/* Feature checklist */}
+              <div className="about-features">
+                <div className="about-feature">
+                  <span className="about-feature-icon"><i className="fa-solid fa-check" aria-hidden="true" /></span>
+                  <div>
+                    <strong>End-to-End Planning</strong>
+                    <p>From venue to vendor, styling to coordination — we manage every layer of your celebration.</p>
+                  </div>
                 </div>
-                <div className="about-img-stat-divider" />
-                <div className="about-img-stat">
-                  <span className="about-stat-n">10+</span>
-                  <span className="about-stat-l">Years Experience</span>
+                <div className="about-feature">
+                  <span className="about-feature-icon"><i className="fa-solid fa-check" aria-hidden="true" /></span>
+                  <div>
+                    <strong>Bespoke Design</strong>
+                    <p>Every theme, palette, and detail is crafted uniquely around your love story — never recycled.</p>
+                  </div>
+                </div>
+                <div className="about-feature">
+                  <span className="about-feature-icon"><i className="fa-solid fa-check" aria-hidden="true" /></span>
+                  <div>
+                    <strong>Panel of 50+ Vendors</strong>
+                    <p>A hand-vetted network of photographers, decorators, caterers, and artists for every budget.</p>
+                  </div>
                 </div>
               </div>
-              <div className="about-img-award">
-                <i className="fa-solid fa-trophy" />
-                <span>India's #1<br />Wedding Studio</span>
+
+              <button className="btn btn-gold" onClick={onBookNow} style={{ marginTop: 24 }}>
+                <i className="fa-solid fa-calendar-heart" aria-hidden="true" />
+                Start Your Story
+              </button>
+            </div>
+
+            {/* Real dummy image with overlays */}
+            <div className="about-story-visual reveal reveal-delay-2">
+              <div className="about-img-wrap">
+                <img
+                  src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=800&q=80"
+                  alt="Luxury wedding ceremony"
+                  className="about-story-img"
+                />
+                <div className="about-img-overlay" />
+                <div className="about-img-stat-card">
+                  <div className="about-img-stat">
+                    <span className="about-stat-n">500+</span>
+                    <span className="about-stat-l">Weddings Planned</span>
+                  </div>
+                  <div className="about-img-stat-divider" />
+                  <div className="about-img-stat">
+                    <span className="about-stat-n">30+</span>
+                    <span className="about-stat-l">Years Experience</span>
+                  </div>
+                </div>
+                <div className="about-img-award">
+                  <i className="fa-solid fa-trophy" />
+                  <span>India's #1<br />Wedding Studio</span>
+                </div>
               </div>
             </div>
           </div>

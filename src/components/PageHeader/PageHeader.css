@@ -1,9 +1,9 @@
 .page-header {
   position: relative;
-  padding: 140px 24px 100px;
+  padding: 90px 24px 50px;
   text-align: center;
   overflow: hidden;
-  min-height: 420px;
+  min-height: 280px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -162,7 +162,7 @@
 }
 
 @media (max-width: 640px) {
-  .page-header { padding: 120px 20px 80px; min-height: 360px; }
+  .page-header { padding: 80px 20px 40px; min-height: 240px; }
   .ph-bg-icon { font-size: 120px; right: -20px; }
   .ph-title { font-size: clamp(30px, 9vw, 42px); }
   .ph-sub { font-size: 14px; }
@@ -170,13 +170,13 @@
 }
 
 @media (min-width: 1400px) {
-  .page-header { padding: 160px 24px 110px; min-height: 500px; }
+  .page-header { padding: 100px 24px 60px; min-height: 340px; }
   .ph-title { font-size: 72px; }
   .ph-sub { font-size: 18px; }
 }
 
 @media (min-width: 1800px) {
-  .page-header { padding: 180px 24px 130px; min-height: 560px; }
+  .page-header { padding: 110px 24px 70px; min-height: 380px; }
   .ph-title { font-size: 84px; }
   .ph-sub { font-size: 20px; }
 }

@@ -8,7 +8,7 @@ export default function Navbar({ onBookNow }) {
   const { isDark, toggleTheme } = useTheme()
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
-  const [showBookBtn, setShowBookBtn] = useState(true)
+  const [showBookBtn, setShowBookBtn] = useState(() => window.innerWidth >= 769)
   const navigate = useNavigate()
   const location = useLocation()
 
@@ -130,7 +130,7 @@ export default function Navbar({ onBookNow }) {
             <div className="mobile-drawer-logo">
               <img src="/jmsDarak.png" alt="JMS Wedding Planner" className="mobile-drawer-logo-img" style={isDark ? { display: 'none' } : undefined} />
               <img src="/jmsLight.png" alt="JMS Wedding Planner" className="mobile-drawer-logo-img" style={isDark ? undefined : { display: 'none' }} />
-              JMS <em>Wedding Planner</em>
+              <em>Wedding Planner</em>
             </div>
             <button className="mobile-close-btn" onClick={closeMenu} aria-label="Close menu">
               <i className="fa-solid fa-xmark" aria-hidden="true" />
@@ -161,20 +161,20 @@ export default function Navbar({ onBookNow }) {
 
           {/* Drawer footer */}
           <div className="mobile-drawer-footer">
-            <button className="btn btn-gold mobile-book-btn" onClick={() => { onBookNow(); closeMenu() }}>
-              <i className="fa-solid fa-calendar-heart" aria-hidden="true" />
-              Book a Consultation
-            </button>
             <div className="mobile-drawer-contact">
-              <a href="tel:+919876543210">
+              <a href="tel:+917324884890">
                 <i className="fa-solid fa-phone" aria-hidden="true" />
-                +91 98765 43210
+                +91 73248 84890
               </a>
               <a href="mailto:hello@jmsweddingplanner.in">
                 <i className="fa-solid fa-envelope" aria-hidden="true" />
                 hello@jmsweddingplanner.in
               </a>
             </div>
+            <button className="btn btn-gold mobile-book-btn" onClick={() => { onBookNow(); closeMenu() }}>
+              <i className="fa-solid fa-calendar-heart" aria-hidden="true" />
+              Book a Consultation
+            </button>
           </div>
         </div>
       </div>

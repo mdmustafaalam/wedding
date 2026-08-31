@@ -9,7 +9,7 @@ const PAGE_CONFIGS = {
     accentIcon: 'fa-solid fa-heart',
     particles: ['fa-solid fa-heart', 'fa-solid fa-ring', 'fa-solid fa-star', 'fa-solid fa-spa'],
     gradient: 'linear-gradient(135deg, #0a0806 0%, #1a1008 50%, #0d0a06 100%)',
-    tag: 'Est. 2014 · Mumbai, India',
+    tag: 'Est. 1990 · Muzaffarpur, India',
   },
   services: {
     icon: 'fa-solid fa-wand-magic-sparkles',

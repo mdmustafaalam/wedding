@@ -64,7 +64,9 @@ function TestimonialSlider() {
   }, [])
 
   /* 3-card view on every screen: center card ~67% of stage, both neighbours peek in the margins */
-  const W = Math.min(stageW * 0.32, 960) || 320
+  /* On ≤900px show ONE card at full stage width */
+  const single = typeof window !== 'undefined' && window.innerWidth <= 900
+  const W = single ? (stageW || 320) : (Math.min(stageW * 0.32, 960) || 320)
   const offset = (stageW - W) / 2 - d * W
   const slots = testimonials.concat(testimonials, testimonials)
 
@@ -199,7 +201,7 @@ export default function Home({ onBookNow }) {
             </h2>
             <div className="divider" />
             <p className="home-about-text">
-              Founded in 2014 by Aditi Verma, JMS Wedding Planner has grown from a boutique Mumbai studio into one of India's most celebrated names in luxury wedding planning. Over 500 weddings later, our philosophy remains unchanged: no two celebrations should feel alike.
+              Founded in 1990 by Aditi Verma, JMS Wedding Planner has grown from a boutique Mumbai studio into one of India's most celebrated names in luxury wedding planning. Over 500 weddings later, our philosophy remains unchanged: no two celebrations should feel alike.
             </p>
             <ul className="home-about-list">
               {[

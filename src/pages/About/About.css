@@ -12,6 +12,47 @@
   margin-top: 24px;
 }
 
+/* Feature checklist on the left */
+.about-features {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-top: 28px;
+  padding-top: 28px;
+  border-top: 1px solid var(--border);
+}
+.about-feature {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+.about-feature-icon {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+  color: #fff;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 14px rgba(212, 175, 55, 0.35);
+}
+.about-feature strong {
+  display: block;
+  font-size: 15px;
+  color: var(--text);
+  font-family: var(--font-heading);
+  margin-bottom: 4px;
+}
+.about-feature p {
+  font-size: 13.5px;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin: 0;
+}
+
 /* Real image wrapper */
 .about-story-visual { display: flex; justify-content: center; }
 .about-img-wrap {
