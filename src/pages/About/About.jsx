@@ -43,7 +43,7 @@ export default function About({ onBookNow }) {
           <div className="about-story-grid">
             <div className="reveal">
               <p className="about-body-text" style={{ marginTop: 0 }}>
-                JMS Wedding Planner was founded in 1990 by Aditi Verma, a bridal stylist who believed every couple deserved a wedding as unique as their love story. What began as a boutique Mumbai studio has grown into one of India's most trusted names in luxury wedding planning.
+                JMS Wedding Planner was founded in 1990 by Sunil Kumar, a bridal stylist who believed every couple deserved a wedding as unique as their love story. What began as a boutique studio in Muzaffarpur, Bihar has grown into one of India's most trusted names in luxury wedding planning.
               </p>
               <p className="about-body-text">
                 Over 500 weddings later, our philosophy remains unchanged: no two celebrations should feel alike. We listen deeply, design boldly, and execute flawlessly — bringing every couple's vision to life with heart and precision.

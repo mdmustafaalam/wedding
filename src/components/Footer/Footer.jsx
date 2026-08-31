@@ -88,7 +88,7 @@ export default function Footer() {
             </li>
             <li>
               <i className="fa-solid fa-phone" aria-hidden="true" />
-              +91 73248 84890
+              Pro. Sunil Kumar: +91 9835275762 / +91 7091876193 / +91 73248 84890
             </li>
             <li>
               <i className="fa-solid fa-clock" aria-hidden="true" />

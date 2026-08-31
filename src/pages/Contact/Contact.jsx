@@ -13,19 +13,35 @@ export default function Contact({ onBookNow }) {
   useScrollReveal()
   const [form, setForm] = useState(initialForm)
   const [submitted, setSubmitted] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const today = new Date().toISOString().split('T')[0]
+
+  const SHEET_URL = 'https://script.google.com/macros/s/AKfycbzfn0hvpXfQ1Aw7Gh5PLJ3OqkY34VKa_ciizlopwOI5-Zpjf3jv6guN-BZ-ezdd1jcO/exec'
 
   const handleChange = e => setForm(prev => ({ ...prev, [e.target.name]: e.target.value }))
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault()
+    setLoading(true)
+    try {
+      await fetch(SHEET_URL, {
+        method: 'POST',
+        body: JSON.stringify({ ...form, type: 'contact' }),
+        mode: 'no-cors',
+      })
+    } catch (err) {
+      console.error('Sheet submit error:', err)
+    }
+    setLoading(false)
     setSubmitted(true)
+    setForm(initialForm)
   }
 
   const contactItems = [
     {
       icon: 'fa-solid fa-location-dot',
       title: 'Visit Our Studio',
-      lines: ['Baba Garib Asthan, Near Sudha Dairy', 'Muzaffarpur, Bihar 842001'],
+      lines: ['Baba Garib Asthan, Near Sudha Dairy', 'Muzaffarpur, Bihar, 842001'],
     },
     {
       icon: 'fa-solid fa-envelope',
@@ -35,7 +51,7 @@ export default function Contact({ onBookNow }) {
     {
       icon: 'fa-solid fa-phone',
       title: 'Call Us',
-      lines: ['+91 73248 84890'],
+      lines: ['Pro. Sunil Kumar', '+91 9835275762 / +91 7091876193 / +91 73248 84890'],
     },
     {
       icon: 'fa-solid fa-clock',
@@ -170,7 +186,7 @@ export default function Contact({ onBookNow }) {
                       <label htmlFor="c-date">
                         <i className="fa-solid fa-calendar" aria-hidden="true" /> Event Date
                       </label>
-                      <input id="c-date" name="date" type="date"
+                      <input id="c-date" name="date" type="date" min={today}
                         value={form.date} onChange={handleChange} />
                     </div>
                   </div>
@@ -197,9 +213,18 @@ export default function Contact({ onBookNow }) {
                       value={form.message} onChange={handleChange} required />
                   </div>
 
-                  <button type="submit" className="btn btn-gold btn-lg contact-submit">
-                    <i className="fa-solid fa-paper-plane" aria-hidden="true" />
-                    Send Message
+                  <button type="submit" className="btn btn-gold btn-lg contact-submit" disabled={loading}>
+                    {loading ? (
+                      <>
+                        <i className="fa-solid fa-spinner fa-spin" aria-hidden="true" />
+                        Submitting...
+                      </>
+                    ) : (
+                      <>
+                        <i className="fa-solid fa-paper-plane" aria-hidden="true" />
+                        Send Message
+                      </>
+                    )}
                   </button>
                 </form>
               </>

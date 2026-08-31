@@ -12,6 +12,7 @@ export default function BookingModal({ isOpen, onClose }) {
   const { isDark } = useTheme()
   const [form, setForm] = useState(initialForm)
   const [submitted, setSubmitted] = useState(false)
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
     if (isOpen) {
@@ -36,8 +37,27 @@ export default function BookingModal({ isOpen, onClose }) {
     return () => window.removeEventListener('keydown', handler)
   }, [isOpen, onClose])
 
+  const SHEET_URL = 'https://script.google.com/macros/s/AKfycbzfn0hvpXfQ1Aw7Gh5PLJ3OqkY34VKa_ciizlopwOI5-Zpjf3jv6guN-BZ-ezdd1jcO/exec'
+
+  const today = new Date().toISOString().split('T')[0]
+
   const handleChange = e => setForm(prev => ({ ...prev, [e.target.name]: e.target.value }))
-  const handleSubmit = e => { e.preventDefault(); setSubmitted(true) }
+  const handleSubmit = async e => {
+    e.preventDefault()
+    setLoading(true)
+    try {
+      await fetch(SHEET_URL, {
+        method: 'POST',
+        body: JSON.stringify(form),
+        mode: 'no-cors',
+      })
+    } catch (err) {
+      console.error('Sheet submit error:', err)
+    }
+    setLoading(false)
+    setSubmitted(true)
+    setForm(initialForm)
+  }
 
   if (!isOpen) return null
 
@@ -123,7 +143,7 @@ export default function BookingModal({ isOpen, onClose }) {
                   <label htmlFor="b-date">
                     <i className="fa-solid fa-calendar" aria-hidden="true" /> Wedding Date
                   </label>
-                  <input id="b-date" name="date" type="date"
+                  <input id="b-date" name="date" type="date" min={today}
                     value={form.date} onChange={handleChange} />
                 </div>
               </div>
@@ -142,11 +162,11 @@ export default function BookingModal({ isOpen, onClose }) {
                   </label>
                   <select id="b-budget" name="budget" value={form.budget} onChange={handleChange}>
                     <option value="">Select budget</option>
+                    <option>₹1L – ₹5L</option>
                     <option>₹5L – ₹10L</option>
                     <option>₹10L – ₹25L</option>
                     <option>₹25L – ₹50L</option>
                     <option>₹50L – ₹1Cr</option>
-                    <option>₹1Cr+</option>
                   </select>
                 </div>
               </div>
@@ -175,9 +195,18 @@ export default function BookingModal({ isOpen, onClose }) {
                   value={form.notes} onChange={handleChange} />
               </div>
 
-              <button type="submit" className="btn btn-gold btn-lg booking-submit">
-                <i className="fa-solid fa-calendar-check" aria-hidden="true" />
-                Book Consultation
+              <button type="submit" className="btn btn-gold btn-lg booking-submit" disabled={loading}>
+                {loading ? (
+                  <>
+                    <i className="fa-solid fa-spinner fa-spin" aria-hidden="true" />
+                    Submitting...
+                  </>
+                ) : (
+                  <>
+                    <i className="fa-solid fa-calendar-check" aria-hidden="true" />
+                    Book Consultation
+                  </>
+                )}
               </button>
             </form>
           )}
