@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import './Hero.css'
 
 import ceremonyImg1 from '../../assets/wedding/t1.jpg'
@@ -43,6 +44,7 @@ const SLIDES = [
 ]
 
 export default function Hero({ onBookNow }) {
+  const navigate    = useNavigate()
   const petalsRef   = useRef(null)
   const videoRef    = useRef(null)
   const timerRef    = useRef(null)
@@ -198,7 +200,7 @@ export default function Hero({ onBookNow }) {
             Book Now
           </button>
           <button className="btn hero-btn-outline btn-lg" style={{ border: '1px solid' }}
-            onClick={() => window.location.href = '/services'}>
+            onClick={() => navigate('/services')}>
             <i className="fa-solid fa-wand-magic-sparkles" aria-hidden="true" />
             Explore Services
           </button>
