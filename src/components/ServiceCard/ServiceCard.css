@@ -41,7 +41,7 @@
 .service-card:hover .service-card-icon {
   background: var(--gold);
   border-color: var(--gold);
-  color: #111;
+  color: #fff;
   transform: scale(1.05);
 }
 

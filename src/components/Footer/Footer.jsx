@@ -16,7 +16,7 @@ export default function Footer() {
 
   const serviceLinks = [
     'Wedding Planning', 'Venue Selection', 'Decoration & Florals',
-    'Photography & Film', 'Catering Services', 'Honeymoon Planning',
+    'Photography & Film', 'Catering Services', 'Flower Gate Custom Decoration',
   ]
 
   const socials = [

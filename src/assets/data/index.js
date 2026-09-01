@@ -87,9 +87,9 @@ export const services = [
   },
   {
     id: 9,
-    icon: 'fa-solid fa-plane-departure',
-    title: 'Honeymoon Planning',
-    description: 'From Maldives overwater villas to European grand tours — we plan your first adventure as a married couple, down to the last detail.',
+    icon: 'fa-solid fa-wand-magic-sparkles',
+    title: 'Flower Gate Custom Decoration',
+    description: 'Bespoke flower gates and entryway installations, handcrafted with fresh blooms to welcome your guests in spectacular style.',
     color: '#D4AF37',
   },
 ]
