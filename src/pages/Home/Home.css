@@ -307,6 +307,7 @@
   .home-tcard--far { opacity: 0; transform: scale(0.9); pointer-events: none; }
 }
 @media (max-width: 640px) {
+  .home-about .ourFullStory { display: flex; margin-inline: auto; }
   .home-tslider { padding: 8px 44px 0px; }
   .home-tslider-stage { height: 330px; }
   .home-tcard { padding: 28px 22px; }

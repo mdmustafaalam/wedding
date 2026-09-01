@@ -359,7 +359,7 @@ button { cursor: pointer; font-family: var(--font-body); border: none; backgroun
   .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
   .form-row { grid-template-columns: 1fr; }
   .section-pad { padding: 20px 0; }
-  .btn-lg { padding: 14px 28px; font-size: 14px; }
+  .btn-lg { padding: 14px 8px; font-size: 14px; }
   .btn { white-space: normal; }
 }
 

@@ -217,7 +217,7 @@ export default function Home({ onBookNow }) {
                 </li>
               ))}
             </ul>
-            <button className="btn btn-gold" onClick={() => navigate('/about')}>
+            <button className="btn btn-gold ourFullStory" onClick={() => navigate('/about')}>
               <i className="fa-solid fa-arrow-right" aria-hidden="true" />
               Our Full Story
             </button>
