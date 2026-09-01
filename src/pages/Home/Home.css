@@ -137,7 +137,6 @@
 /* Track: all cards laid out in a flex row, shifted by transform — no cross-screen fly */
 .home-tslider {
   position: relative;
-  padding: 20px 0 60px;
 }
 
 .home-tslider-stage {
@@ -299,8 +298,8 @@
 .home-tarrow--next { right: 0; }
 
 @media (max-width: 900px) {
-  .home-tslider-stage { height: 420px; }
-  .home-tslider { padding: 20px 52px 52px; }
+  .home-tslider-stage { height: 310px; }
+  .home-tslider { padding: 10px 52px 0; }
   .home-tcard--center,
   .home-tcard--side,
   .home-tcard--far { box-shadow: none; }
@@ -308,14 +307,14 @@
   .home-tcard--far { opacity: 0; transform: scale(0.9); pointer-events: none; }
 }
 @media (max-width: 640px) {
-  .home-tslider { padding: 16px 44px 48px; }
-  .home-tslider-stage { height: 470px; }
+  .home-tslider { padding: 8px 44px 0px; }
+  .home-tslider-stage { height: 330px; }
   .home-tcard { padding: 28px 22px; }
 }
 @media (max-width: 400px) {
-  .home-tslider { padding: 12px 38px 40px; }
-  .home-tslider-stage { height: 530px; }
+  .home-tslider { padding: 5px 38px 0; }
+  .home-tslider-stage { height: 380px; }
   .home-tcard { padding: 24px 18px; }
   .home-tcard-text { -webkit-line-clamp: 6; }
-  .home-tarrow { width: 38px; height: 38px; }
+  .home-tarrow { width: 25px; height: 25px; }
 }

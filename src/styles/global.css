@@ -343,7 +343,7 @@ button { cursor: pointer; font-family: var(--font-body); border: none; backgroun
 
 /* Small tablet */
 @media (max-width: 900px) {
-  .section-pad { padding: 80px 0; }
+  .section-pad { padding: 45px 0; }
 }
 
 /* Large phone / small tablet */
@@ -366,6 +366,6 @@ button { cursor: pointer; font-family: var(--font-body); border: none; backgroun
 /* Small phone */
 @media (max-width: 400px) {
   :root { --container-pad: 18px; --section-v: 56px; }
-  .btn { padding: 11px 22px; font-size: 13px; }
+  .btn { padding: 11px 5px; font-size: 13px; }
   .section-label { font-size: 10px; }
 }
