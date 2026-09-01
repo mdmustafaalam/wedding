@@ -88,7 +88,7 @@ export const services = [
   {
     id: 9,
     icon: 'fa-solid fa-wand-magic-sparkles',
-    title: 'Flower Gate Custom Decoration',
+    title: 'Flower Gate Decoration',
     description: 'Bespoke flower gates and entryway installations, handcrafted with fresh blooms to welcome your guests in spectacular style.',
     color: '#D4AF37',
   },
