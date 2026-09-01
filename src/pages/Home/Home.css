@@ -177,7 +177,7 @@
 /* Center card — large, elevated */
 .home-tcard--center {
   border-color: var(--border-strong);
-  box-shadow: 0 24px 72px rgba(0,0,0,0.14);
+  box-shadow: 0 0 30px rgba(0,0,0,0.14);
   pointer-events: none;
 }
 
