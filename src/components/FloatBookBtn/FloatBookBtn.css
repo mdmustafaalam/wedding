@@ -44,7 +44,7 @@
 }
 
 @media (max-width: 640px) {
-  .float-book-btn { right: 20px; bottom: 20px; width: 54px; height: 54px; }
+  .float-book-btn { right: 20px; bottom: 20px; width: 45px; height: 45px; }
   .float-book-btn i { font-size: 27px; }
 }
 @media (max-width: 380px) {

@@ -373,15 +373,16 @@
   .fan-stage { height: 430px; }
   .fan-card { padding: 26px 22px; }
   .t-cta { padding: 44px 24px; }
+  .t-cta-actions .t-cta-btn { padding: 10px 20px; }
   .t-cta-title { font-size: 26px; }
   .grid-3 { grid-template-columns: 1fr; }
   .t-grid-card { width: 100%; }
 }
 @media (max-width: 400px) {
-  .fan-carousel { padding: 0 36px 36px; }
+  .fan-carousel { padding: 0 18px 0; }
   .fan-stage { height: 400px; }
   .fan-card { padding: 22px 16px; }
-  .fan-arrow { width: 40px; height: 40px; }
+  .fan-arrow { width: 25px; height: 25px; }
   .t-cta { padding: 36px 18px; }
 }
 @media (min-width: 1800px) {
