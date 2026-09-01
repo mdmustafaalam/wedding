@@ -152,7 +152,7 @@
   font-size: 20px; color: var(--gold);
   transition: all 0.3s;
 }
-.about-why-card:hover .about-why-icon { background: var(--gold); color: #111; }
+.about-why-card:hover .about-why-icon { background: var(--gold); color: #fff; }
 .about-why-title { font-size: 16px; font-weight: 600; color: var(--text); }
 .about-why-desc { font-size: 14px; color: var(--text-muted); line-height: 1.75; }
 
