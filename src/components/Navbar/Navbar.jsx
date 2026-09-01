@@ -166,9 +166,9 @@ export default function Navbar({ onBookNow }) {
                 <i className="fa-solid fa-phone" aria-hidden="true" />
                 +91 73248 84890
               </a>
-              <a href="mailto:hello@jmsweddingplanner.in">
+              <a href="mailto:jmsweddingplanner@gmail.com">
                 <i className="fa-solid fa-envelope" aria-hidden="true" />
-                hello@jmsweddingplanner.in
+                jmsweddingplanner@gmail.com
               </a>
             </div>
             <button className="btn btn-gold mobile-book-btn" onClick={() => { onBookNow(); closeMenu() }}>

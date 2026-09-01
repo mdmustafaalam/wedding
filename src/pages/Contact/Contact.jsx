@@ -46,7 +46,7 @@ export default function Contact({ onBookNow }) {
     {
       icon: 'fa-solid fa-envelope',
       title: 'Email Us',
-      lines: ['hello@jmsweddingplanner.in', 'bookings@jmsweddingplanner.in'],
+      lines: ['jmsweddingplanner@gmail.com'],
     },
     {
       icon: 'fa-solid fa-phone',
