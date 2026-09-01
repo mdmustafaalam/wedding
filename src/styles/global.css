@@ -324,7 +324,7 @@ button { cursor: pointer; font-family: var(--font-body); border: none; backgroun
 @media (min-width: 1400px) {
   :root {
     --container-pad: 80px;
-    --section-v: 120px;
+    --section-v: 40px;
     --grid-gap: 36px;
     --card-gap: 30px;
   }

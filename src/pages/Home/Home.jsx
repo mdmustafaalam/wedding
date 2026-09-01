@@ -235,7 +235,7 @@ export default function Home({ onBookNow }) {
             </h2>
             <div className="divider center" />
           </div>
-          <div className="reveal" style={{ marginTop: 52 }}>
+          <div className="reveal">
             <TestimonialSlider />
           </div>
           <div className="home-services-cta reveal">

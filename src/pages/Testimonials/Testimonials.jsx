@@ -117,7 +117,7 @@ export default function Testimonials({ onBookNow }) {
       {/* ── Fan Carousel ── */}
       <section className="section-pad testimonials-fan-section">
         <div className="container">
-          <div className="text-center reveal" style={{ marginBottom: 64 }}>
+          <div className="text-center reveal">
             <span className="section-label">
               <i className="fa-solid fa-star" /> What Our Couples Say
             </span>
