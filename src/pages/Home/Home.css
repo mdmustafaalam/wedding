@@ -118,6 +118,7 @@
   .home-about-grid { grid-template-columns: 1fr; gap: 44px; }
   .home-about-img-wrap { max-width: 100%; }
   .home-about-text { font-size: 14.5px; }
+  .about-header { max-width: 900px; margin-inline: auto; text-align: center; display: flex; flex-direction: column; align-items: center; }
 }
 @media (max-width: 480px) {
   .home-about-img-badge { top: 12px; left: 12px; padding: 10px 12px; }

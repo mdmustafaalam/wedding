@@ -193,13 +193,15 @@ export default function Home({ onBookNow }) {
           </div>
 
           <div className="home-about-content reveal reveal-delay-2">
-            <span className="section-label">
-              <i className="fa-solid fa-heart" aria-hidden="true" /> Our Story
-            </span>
-            <h2 className="section-title">
-              A Decade of<br /><span className="gold">Love Stories</span>
-            </h2>
-            <div className="divider" />
+            <div className="about-header">
+              <span className="section-label">
+                <i className="fa-solid fa-heart" aria-hidden="true" /> Our Story
+              </span>
+              <h2 className="section-title">
+                A Decade of<br /><span className="gold">Love Stories</span>
+              </h2>
+              <div className="divider" />
+            </div>
             <p className="home-about-text">
               Founded in 1990 by Sunil Kumar, JMS Wedding Planner has grown from a boutique studio in Muzaffarpur, Bihar into one of India's most celebrated names in luxury wedding planning. Over 500 weddings later, our philosophy remains unchanged: no two celebrations should feel alike.
             </p>
