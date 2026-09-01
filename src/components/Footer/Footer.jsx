@@ -20,10 +20,10 @@ export default function Footer() {
   ]
 
   const socials = [
-    { icon: 'fa-brands fa-instagram',  label: 'Instagram' },
-    { icon: 'fa-brands fa-facebook-f', label: 'Facebook' },
-    { icon: 'fa-brands fa-pinterest-p', label: 'Pinterest' },
-    { icon: 'fa-brands fa-youtube',    label: 'YouTube' },
+    { icon: 'fa-brands fa-instagram',  label: 'Instagram',  href: 'https://www.instagram.com/jai_maa_santoshi_flower_decora?igsi=MWtnaHlneXZzNW1zbg%3D%3D', external: true },
+    { icon: 'fa-brands fa-facebook-f', label: 'Facebook',  href: '#', external: false },
+    { icon: 'fa-solid fa-envelope',    label: 'Email',     href: 'mailto:jmsweddingplanner@gmail.com', external: false },
+    { icon: 'fa-solid fa-phone',       label: 'Phone',     href: 'tel:+917324884890', external: false },
   ]
 
   return (
@@ -40,7 +40,14 @@ export default function Footer() {
           </p>
           <div className="social-row">
             {socials.map(s => (
-              <a key={s.label} href="#" className="social-btn" aria-label={s.label} title={s.label}>
+              <a
+                key={s.label}
+                href={s.href}
+                className="social-btn"
+                aria-label={s.label}
+                title={s.label}
+                {...(s.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+              >
                 <i className={s.icon} aria-hidden="true" />
               </a>
             ))}
@@ -84,7 +91,7 @@ export default function Footer() {
             </li>
             <li>
               <i className="fa-solid fa-envelope" aria-hidden="true" />
-              hello@jmsweddingplanner.in
+              jmsweddingplanner@gmail.com
             </li>
             <li>
               <i className="fa-solid fa-phone" aria-hidden="true" />
