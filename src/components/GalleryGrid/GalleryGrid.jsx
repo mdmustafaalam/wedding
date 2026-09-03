@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { galleryItems } from '../../assets/data'
+import { galleryItems, galleryVideos } from '../../assets/data'
 import './GalleryGrid.css'
 
 const CATEGORIES = [
@@ -9,24 +9,37 @@ const CATEGORIES = [
   { id: 'decoration',  label: 'Decoration',  icon: 'fa-solid fa-wand-magic-sparkles' },
   { id: 'photography', label: 'Photography', icon: 'fa-solid fa-camera' },
   { id: 'couples',     label: 'Couples',     icon: 'fa-solid fa-heart' },
+  { id: 'videos',      label: 'Videos',      icon: 'fa-solid fa-video' },
 ]
 
-const countFor = (id) => id === 'all'
-  ? galleryItems.length
-  : galleryItems.filter(g => g.category === id).length
+const countFor = (id) => {
+  if (id === 'all') return galleryItems.length + galleryVideos.length
+  if (id === 'videos') return galleryVideos.length
+  return galleryItems.filter(g => g.category === id).length
+}
 
 export default function GalleryGrid({ limit }) {
   const [active, setActive] = useState('all')
   const [lightbox, setLightbox] = useState(null)
-  const [animKey, setAnimKey] = useState(0)          // ← force re-mount on filter change
+  const [videoLightbox, setVideoLightbox] = useState(null)
+  const [animKey, setAnimKey] = useState(0)
   const prevActive = useRef('all')
+  const videoRef = useRef(null)
 
-  const filtered = (active === 'all'
+  const filteredImages = (active === 'all'
     ? galleryItems
     : galleryItems.filter(g => g.category === active)
-  ).slice(0, limit)
+  )
 
-  // Whenever filter changes, bump animKey so items re-mount and reveal fires
+  const showVideos = active === 'all' || active === 'videos'
+  const filteredVideos = showVideos ? galleryVideos : []
+
+  const displayItems = active === 'videos'
+    ? []
+    : active === 'all'
+      ? filteredImages.slice(0, limit)
+      : filteredImages.slice(0, limit)
+
   const handleFilter = (catId) => {
     if (catId === active) return
     prevActive.current = active
@@ -34,12 +47,28 @@ export default function GalleryGrid({ limit }) {
     setAnimKey(k => k + 1)
   }
 
-  // Close lightbox on Escape
   useEffect(() => {
-    const handler = (e) => { if (e.key === 'Escape') setLightbox(null) }
+    const handler = (e) => {
+      if (e.key === 'Escape') {
+        setLightbox(null)
+        setVideoLightbox(null)
+      }
+    }
     window.addEventListener('keydown', handler)
     return () => window.removeEventListener('keydown', handler)
   }, [])
+
+  useEffect(() => {
+    if (videoLightbox && videoRef.current) {
+      videoRef.current.play().catch(() => {})
+    }
+    return () => {
+      if (videoRef.current) {
+        videoRef.current.pause()
+        videoRef.current.currentTime = 0
+      }
+    }
+  }, [videoLightbox])
 
   return (
     <div className="gallery-wrap">
@@ -59,39 +88,130 @@ export default function GalleryGrid({ limit }) {
         ))}
       </div>
 
-      {/* Masonry grid — key forces full re-render on filter change */}
-      <div className="gallery-masonry" key={animKey}>
-        {filtered.map((item, idx) => (
-          <div
-            key={`${item.id}-${animKey}`}
-            className="gallery-item"
-            style={{ animationDelay: `${idx * 60}ms` }}
-            onClick={() => setLightbox(item)}
-            role="button"
-            tabIndex={0}
-            aria-label={`View ${item.label}`}
-            onKeyDown={e => e.key === 'Enter' && setLightbox(item)}
-          >
-            <div className="gallery-img" style={{ height: item.height }}>
-              <img
-                src={item.image}
-                alt={item.label}
-                loading="lazy"
-                className="gallery-photo"
-              />
-              <div className="gallery-overlay">
-                <i className="fa-solid fa-magnifying-glass-plus" aria-hidden="true" />
+      {/* Video section */}
+      {active === 'videos' && (
+        <div className="gallery-masonry" key={`videos-${animKey}`}>
+          {filteredVideos.map((item, idx) => (
+            <div
+              key={`${item.id}-${animKey}`}
+              className="gallery-item gallery-item--video"
+              style={{ animationDelay: `${idx * 60}ms` }}
+              onClick={() => setVideoLightbox(item)}
+              role="button"
+              tabIndex={0}
+              aria-label={`Play ${item.label}`}
+              onKeyDown={e => e.key === 'Enter' && setVideoLightbox(item)}
+            >
+              <div className="gallery-img gallery-img--video" style={{ height: item.height }}>
+                <video
+                  src={item.video}
+                  className="gallery-video-thumb"
+                  muted
+                  preload="metadata"
+                  onMouseOver={e => e.target.play()}
+                  onMouseOut={e => { e.target.pause(); e.target.currentTime = 0 }}
+                />
+                <div className="gallery-overlay">
+                  <i className="fa-solid fa-play" aria-hidden="true" />
+                </div>
+                <div className="video-badge">
+                  <i className="fa-solid fa-play" aria-hidden="true" />
+                </div>
+              </div>
+              <div className="gallery-label">
+                <i className="fa-solid fa-video" aria-hidden="true" />
+                {item.label}
               </div>
             </div>
-            <div className="gallery-label">
-              <i className="fa-solid fa-image" aria-hidden="true" />
-              {item.label}
-            </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      )}
 
-      {/* Lightbox */}
+      {/* Image masonry grid */}
+      {active !== 'videos' && (
+        <div className="gallery-masonry" key={animKey}>
+          {displayItems.map((item, idx) => (
+            <div
+              key={`${item.id}-${animKey}`}
+              className="gallery-item"
+              style={{ animationDelay: `${idx * 60}ms` }}
+              onClick={() => setLightbox(item)}
+              role="button"
+              tabIndex={0}
+              aria-label={`View ${item.label}`}
+              onKeyDown={e => e.key === 'Enter' && setLightbox(item)}
+            >
+              <div className="gallery-img" style={{ height: item.height }}>
+                <img
+                  src={item.image}
+                  alt={item.label}
+                  loading="lazy"
+                  className="gallery-photo"
+                />
+                <div className="gallery-overlay">
+                  <i className="fa-solid fa-magnifying-glass-plus" aria-hidden="true" />
+                </div>
+              </div>
+              <div className="gallery-label">
+                <i className="fa-solid fa-image" aria-hidden="true" />
+                {item.label}
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {/* Combined "all" view — images + videos section */}
+      {active === 'all' && filteredVideos.length > 0 && (
+        <>
+          <div className="video-section-header reveal">
+            <span className="section-label">
+              <i className="fa-solid fa-video" aria-hidden="true" /> Our Videos
+            </span>
+            <h2 className="section-title">
+              Love Stories<br /><span className="gold">Captured on Film</span>
+            </h2>
+            <div className="divider center" />
+          </div>
+          <div className="gallery-masonry" key={`all-videos-${animKey}`}>
+            {filteredVideos.map((item, idx) => (
+              <div
+                key={`${item.id}-${animKey}`}
+                className="gallery-item gallery-item--video"
+                style={{ animationDelay: `${idx * 60}ms` }}
+                onClick={() => setVideoLightbox(item)}
+                role="button"
+                tabIndex={0}
+                aria-label={`Play ${item.label}`}
+                onKeyDown={e => e.key === 'Enter' && setVideoLightbox(item)}
+              >
+                <div className="gallery-img gallery-img--video" style={{ height: item.height }}>
+                  <video
+                    src={item.video}
+                    className="gallery-video-thumb"
+                    muted
+                    preload="metadata"
+                    onMouseOver={e => e.target.play()}
+                    onMouseOut={e => { e.target.pause(); e.target.currentTime = 0 }}
+                  />
+                  <div className="gallery-overlay">
+                    <i className="fa-solid fa-play" aria-hidden="true" />
+                  </div>
+                  <div className="video-badge">
+                    <i className="fa-solid fa-play" aria-hidden="true" />
+                  </div>
+                </div>
+                <div className="gallery-label">
+                  <i className="fa-solid fa-video" aria-hidden="true" />
+                  {item.label}
+                </div>
+              </div>
+            ))}
+          </div>
+        </>
+      )}
+
+      {/* Image Lightbox */}
       {lightbox && (
         <div
           className="lightbox-backdrop"
@@ -117,6 +237,44 @@ export default function GalleryGrid({ limit }) {
                 {lightbox.category}
               </span>
               <h3 className="lightbox-title">{lightbox.label}</h3>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Video Player Popup */}
+      {videoLightbox && (
+        <div
+          className="video-backdrop"
+          onClick={() => setVideoLightbox(null)}
+          role="dialog"
+          aria-modal="true"
+          aria-label={`Play ${videoLightbox.label}`}
+        >
+          <div className="video-player-box" onClick={e => e.stopPropagation()}>
+            <button
+              className="lightbox-close"
+              onClick={() => setVideoLightbox(null)}
+              aria-label="Close video player"
+            >
+              <i className="fa-solid fa-xmark" aria-hidden="true" />
+            </button>
+            <div className="video-player-wrapper">
+              <video
+                ref={videoRef}
+                src={videoLightbox.video}
+                controls
+                autoPlay
+                muted
+                className="video-player"
+              />
+            </div>
+            <div className="lightbox-info">
+              <span className="lightbox-cat">
+                <i className="fa-solid fa-video" aria-hidden="true" />
+                {videoLightbox.category}
+              </span>
+              <h3 className="lightbox-title">{videoLightbox.label}</h3>
             </div>
           </div>
         </div>

@@ -246,3 +246,110 @@
   object-fit: cover;
   display: block;
 }
+
+/* ── Video Thumbnails ── */
+.gallery-img--video {
+  cursor: pointer;
+}
+.gallery-video-thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.gallery-item--video .gallery-overlay {
+  opacity: 1;
+  background: rgba(0, 0, 0, 0.3);
+  transition: background 0.3s ease;
+}
+.gallery-item--video:hover .gallery-overlay {
+  background: rgba(0, 0, 0, 0.55);
+}
+.gallery-item--video .gallery-overlay i {
+  font-size: 32px;
+  color: #fff;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+.gallery-item--video:hover .gallery-overlay i {
+  transform: scale(1.1);
+  background: var(--gold-light, #e8c84a);
+}
+.video-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: var(--gold);
+  color: #111;
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  z-index: 2;
+}
+
+/* ── Video Section Header (in "All" view) ── */
+.video-section-header {
+  margin: 40px 0 24px;
+  text-align: center;
+}
+
+/* ── Video Player Popup ── */
+.video-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.92);
+  z-index: 3000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  animation: fadeIn 0.2s ease;
+}
+.video-player-box {
+  background: #000;
+  border-radius: 16px;
+  overflow: hidden;
+  max-width: 800px;
+  width: 100%;
+  position: relative;
+  animation: slideUp 0.3s ease;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+.video-player-wrapper {
+  position: relative;
+  width: 100%;
+  background: #000;
+}
+.video-player {
+  width: 100%;
+  display: block;
+  outline: none;
+  max-height: 65vh;
+}
+.video-player-box .lightbox-info {
+  background: var(--card-bg);
+  border-top: 1px solid var(--border);
+}
+
+@media (max-width: 640px) {
+  .video-backdrop { padding: 12px; }
+  .video-player-box { border-radius: 10px; }
+  .gallery-item--video .gallery-overlay i {
+    width: 48px;
+    height: 48px;
+    font-size: 24px;
+  }
+}

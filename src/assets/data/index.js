@@ -28,6 +28,15 @@ import g27 from '../../assets/wedding/g27.jpg'
 import g28 from '../../assets/wedding/g28.jpg'
 import g29 from '../../assets/wedding/g29.jpg'
 
+import ceremonyVdo1 from '../../assets/wedding/ceremonyVdo1.mp4'
+import ceremonyVdo2 from '../../assets/wedding/ceremonyVdo2.mp4'
+import ceremonyVdo3 from '../../assets/wedding/ceremonyVdo3.mp4'
+import ceremonyVdo4 from '../../assets/wedding/ceremonyVdo4.mp4'
+import ceremonyVdo5 from '../../assets/wedding/ceremonyVdo5.mp4'
+import ceremonyVdo6 from '../../assets/wedding/ceremonyVdo6.mp4'
+import ceremonyVdo7 from '../../assets/wedding/ceremonyVdo7.mp4'
+import ceremonyVdo8 from '../../assets/wedding/ceremonyVdo8.mp4'
+
 export const services = [
   {
     id: 1,
@@ -197,4 +206,15 @@ export const whyUs = [
   { icon: 'fa-solid fa-star',         title: 'Premium Services',       desc: 'White-glove service from consultation to farewell — reachable 24/7 for our couples.' },
   { icon: 'fa-solid fa-handshake',    title: 'Trusted Vendors',        desc: 'Our network is vetted, certified, and consistently delivers above expectations.' },
   { icon: 'fa-solid fa-calendar-check', title: 'Stress-Free Process',  desc: 'Our planning system keeps you informed and at ease through every single step.' },
+]
+
+export const galleryVideos = [
+  { id: 'v1', video: ceremonyVdo1, label: 'Ceremony Highlights 1', category: 'ceremony', height: 280 },
+  { id: 'v2', video: ceremonyVdo2, label: 'Ceremony Highlights 2', category: 'ceremony', height: 280 },
+  { id: 'v3', video: ceremonyVdo3, label: 'Ceremony Highlights 3', category: 'ceremony', height: 280 },
+  { id: 'v4', video: ceremonyVdo4, label: 'Ceremony Highlights 4', category: 'ceremony', height: 280 },
+  { id: 'v5', video: ceremonyVdo5, label: 'Ceremony Highlights 5', category: 'ceremony', height: 280 },
+  { id: 'v6', video: ceremonyVdo6, label: 'Ceremony Highlights 6', category: 'ceremony', height: 280 },
+  { id: 'v7', video: ceremonyVdo7, label: 'Ceremony Highlights 7', category: 'ceremony', height: 280 },
+  { id: 'v8', video: ceremonyVdo8, label: 'Ceremony Highlights 8', category: 'ceremony', height: 280 },
 ]
