@@ -20,7 +20,7 @@ const SLIDES = [
   {
     label: 'Wedding Film — Our Story',
     videoUrl: ceremonyVdo1,
-    imgUrl: ceremonyImg1,
+    videoUrl: ceremonyVdo1,
     tag: 'Film',
     isVideo: true,
   },
@@ -33,7 +33,7 @@ const SLIDES = [
   {
     label: 'Wedding Film — Our Story',
     videoUrl: ceremonyVdo2,
-    imgUrl: ceremonyImg1,
+    videoUrl: ceremonyVdo2,
     tag: 'Film',
     isVideo: true,
   },
@@ -46,7 +46,7 @@ const SLIDES = [
   {
     label: 'Wedding Film — Our Story',
     videoUrl: ceremonyVdo3,
-    imgUrl: ceremonyImg1,
+    videoUrl: ceremonyVdo3,
     tag: 'Film',
     isVideo: true,
   },
@@ -138,7 +138,7 @@ export default function Hero({ onBookNow }) {
               muted
               loop
               playsInline
-              poster={s.imgUrl}
+              poster={s.videoUrl}
             />
           ) : (
             <img
@@ -160,7 +160,7 @@ export default function Hero({ onBookNow }) {
                   loop
                   autoPlay
                   playsInline
-                  poster={s.imgUrl}
+                  poster={s.videoUrl}
                 />
               ) : (
                 <img src={s.imgUrl} alt={s.label} className="hero-frame-img" />

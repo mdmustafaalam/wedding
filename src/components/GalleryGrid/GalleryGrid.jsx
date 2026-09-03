@@ -18,7 +18,7 @@ const countFor = (id) => {
   return galleryItems.filter(g => g.category === id).length
 }
 
-export default function GalleryGrid({ limit }) {
+export default function GalleryGrid({ limit, hideFilters, afterImagesSlot }) {
   const [active, setActive] = useState('all')
   const [lightbox, setLightbox] = useState(null)
   const [videoLightbox, setVideoLightbox] = useState(null)
@@ -73,6 +73,7 @@ export default function GalleryGrid({ limit }) {
   return (
     <div className="gallery-wrap">
       {/* Filters */}
+      {!hideFilters && (
       <div className="gallery-filters" role="group" aria-label="Filter gallery by category">
         {CATEGORIES.map(cat => (
           <button
@@ -87,6 +88,7 @@ export default function GalleryGrid({ limit }) {
           </button>
         ))}
       </div>
+      )}
 
       {/* Video section */}
       {active === 'videos' && (
@@ -160,6 +162,7 @@ export default function GalleryGrid({ limit }) {
           ))}
         </div>
       )}
+      {afterImagesSlot}
 
       {/* Combined "all" view — images + videos section */}
       {active === 'all' && filteredVideos.length > 0 && (

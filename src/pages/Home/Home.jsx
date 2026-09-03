@@ -262,13 +262,14 @@ export default function Home({ onBookNow }) {
             <div className="divider center" />
           </div>
           <div style={{ marginTop: 52 }} className="gallery-center-filters">
-            <GalleryGrid limit={8} />
-          </div>
-          <div className="home-services-cta reveal">
-            <button className="btn btn-outline" onClick={() => navigate('/gallery')}>
-              <i className="fa-solid fa-images" aria-hidden="true" />
-              View Full Gallery
-            </button>
+            <GalleryGrid limit={8} hideFilters afterImagesSlot={
+              <div className="home-services-cta reveal">
+                <button className="btn btn-outline" onClick={() => navigate('/gallery')}>
+                  <i className="fa-solid fa-images" aria-hidden="true" />
+                  View Full Gallery
+                </button>
+              </div>
+            } />
           </div>
         </div>
       </section>
