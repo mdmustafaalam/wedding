@@ -6,7 +6,9 @@ import ceremonyImg1 from '../../assets/wedding/t1.jpg'
 import ceremonyImg2 from '../../assets/wedding/t2.jpg'
 import ceremonyImg3 from '../../assets/wedding/t3.jpg'
 import ceremonyImg4 from '../../assets/wedding/t4.jpg'
-import ceremonyVdo1 from '../../assets/wedding/ceremonyVdo.mp4'
+import ceremonyVdo1 from '../../assets/wedding/ceremonyVdo1.mp4'
+import ceremonyVdo2 from '../../assets/wedding/ceremonyVdo2.mp4'
+import ceremonyVdo3 from '../../assets/wedding/ceremonyVdo3.mp4'
 
 const SLIDES = [
   {
@@ -17,7 +19,6 @@ const SLIDES = [
   },
   {
     label: 'Wedding Film — Our Story',
-    // Dummy public domain wedding MP4
     videoUrl: ceremonyVdo1,
     imgUrl: ceremonyImg1,
     tag: 'Film',
@@ -30,10 +31,24 @@ const SLIDES = [
     isVideo: false,
   },
   {
+    label: 'Wedding Film — Our Story',
+    videoUrl: ceremonyVdo2,
+    imgUrl: ceremonyImg1,
+    tag: 'Film',
+    isVideo: true,
+  },
+  {
     label: 'Floral Decoration',
     imgUrl: ceremonyImg3,
     tag: 'Decoration',
     isVideo: false,
+  },
+  {
+    label: 'Wedding Film — Our Story',
+    videoUrl: ceremonyVdo3,
+    imgUrl: ceremonyImg1,
+    tag: 'Film',
+    isVideo: true,
   },
   {
     label: 'Floral Decoration',

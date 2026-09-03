@@ -48,7 +48,7 @@
 }
 .process-step:hover .process-step-icon {
   background: var(--gold);
-  color: #111;
+  color: #fff;
   border-color: var(--gold);
   transform: scale(1.08);
 }
