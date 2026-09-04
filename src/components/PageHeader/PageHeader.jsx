@@ -43,6 +43,30 @@ const PAGE_CONFIGS = {
     gradient: 'linear-gradient(135deg, #08080a 0%, #0d0d1a 50%, #08080f 100%)',
     tag: 'We Reply Within 24 Hours',
   },
+  privacy: {
+    icon: 'fa-solid fa-shield-halved',
+    emoji: '🔒',
+    accentIcon: 'fa-solid fa-lock',
+    particles: ['fa-solid fa-shield-halved', 'fa-solid fa-lock', 'fa-solid fa-user-shield', 'fa-solid fa-key'],
+    gradient: 'linear-gradient(135deg, #06080a 0%, #08101a 50%, #06080d 100%)',
+    tag: 'Your Privacy Matters',
+  },
+  terms: {
+    icon: 'fa-solid fa-file-contract',
+    emoji: '📋',
+    accentIcon: 'fa-solid fa-gavel',
+    particles: ['fa-solid fa-file-contract', 'fa-solid fa-gavel', 'fa-solid fa-scale-balanced', 'fa-solid fa-scroll'],
+    gradient: 'linear-gradient(135deg, #080806 0%, #101008 50%, #0a0a06 100%)',
+    tag: 'Legal Framework',
+  },
+  return: {
+    icon: 'fa-solid fa-arrow-rotate-left',
+    emoji: '🔄',
+    accentIcon: 'fa-solid fa-rotate',
+    particles: ['fa-solid fa-arrow-rotate-left', 'fa-solid fa-rotate', 'fa-solid fa-undo', 'fa-solid fa-circle-check'],
+    gradient: 'linear-gradient(135deg, #0a0806 0%, #141008 50%, #0d0a06 100%)',
+    tag: 'Fair & Transparent',
+  },
 }
 
 export default function PageHeader({ eyebrow, title, sub, page = 'about' }) {

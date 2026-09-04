@@ -12,6 +12,9 @@ export default function Footer() {
     { to: '/gallery',      label: 'Gallery' },
     { to: '/testimonials', label: 'Testimonials' },
     { to: '/contact',      label: 'Contact' },
+    { to: '/privacy-policy',  label: 'Privacy Policy' },
+    { to: '/return-policy',   label: 'Return Policy' },
+    { to: '/terms-conditions', label: 'Terms & Conditions' },
   ]
 
   const serviceLinks = [
@@ -105,14 +108,14 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="footer-bottom">
-        <div className="container footer-bottom-inner">
-          <p>
-            <i className="fa-regular fa-copyright" aria-hidden="true" /> {new Date().getFullYear()} JMS Wedding Planner. All rights reserved.
-          </p>
-          <p>Crafted with <i className="fa-solid fa-heart footer-heart" aria-hidden="true" /> for love stories.</p>
+        <div className="footer-bottom">
+          <div className="container footer-bottom-inner">
+            <p>
+              <i className="fa-regular fa-copyright" aria-hidden="true" /> {new Date().getFullYear()} JMS Wedding Planner. All rights reserved.
+            </p>
+            <p>Crafted with <i className="fa-solid fa-heart footer-heart" aria-hidden="true" /> for love stories.</p>
+          </div>
         </div>
-      </div>
     </footer>
   )
 }

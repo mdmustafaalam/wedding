@@ -16,6 +16,9 @@ import Services from './pages/Services/Services'
 import Gallery from './pages/Gallery/Gallery'
 import Testimonials from './pages/Testimonials/Testimonials'
 import Contact from './pages/Contact/Contact'
+import PrivacyPolicy from './pages/PrivacyPolicy/PrivacyPolicy'
+import TermsConditions from './pages/TermsConditions/TermsConditions'
+import ReturnPolicy from './pages/ReturnPolicy/ReturnPolicy'
 
 import './styles/global.css'
 
@@ -67,6 +70,9 @@ export default function App() {
         <Route path="/gallery"      element={<Gallery      onBookNow={openBooking} />} />
         <Route path="/testimonials" element={<Testimonials onBookNow={openBooking} />} />
         <Route path="/contact"      element={<Contact      onBookNow={openBooking} />} />
+        <Route path="/privacy-policy"  element={<PrivacyPolicy />} />
+        <Route path="/terms-conditions" element={<TermsConditions />} />
+        <Route path="/return-policy"   element={<ReturnPolicy />} />
         <Route path="*"             element={<Home         onBookNow={openBooking} />} />
       </Routes>
 
